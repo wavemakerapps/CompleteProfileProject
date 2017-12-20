@@ -1,0 +1,19 @@
+[ {
+  "providerId" : "google",
+  "authorizationUrl" : "https://accounts.google.com/o/oauth2/auth",
+  "accessTokenUrl" : "https://www.googleapis.com/oauth2/v3/token",
+  "clientId" : "845261766715-81djhlutih3r2njg3m5t8v33dpeviulr.apps.googleusercontent.com",
+  "clientSecret" : "d5d5wQ5GoW_l6FjYnQ2TA3pV",
+  "sendAccessTokenAs" : "HEADER",
+  "accessTokenParamName" : "Bearer",
+  "scopes" : [ {
+    "name" : "Calendar",
+    "value" : "https://www.googleapis.com/auth/calendar https://www.googleapis.com/auth/calendar.readonly"
+  }, {
+    "name" : "Google Drive",
+    "value" : "https://www.googleapis.com/auth/drive.readonly https://www.googleapis.com/auth/drive.file https://www.googleapis.com/auth/drive.photos.readonly"
+  }, {
+    "name" : "profile",
+    "value" : "https://www.googleapis.com/auth/userinfo.profile"
+  } ]
+} ]

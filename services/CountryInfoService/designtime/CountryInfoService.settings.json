@@ -1,0 +1,10 @@
+{
+  "httpBasicAuthUsername" : "",
+  "httpBasicAuthPassword" : "",
+  "endpointAddress" : "http://webservices.oorsprong.org/websamples.countryinfo/CountryInfoService.wso",
+  "connectionTimeout" : 10000,
+  "requestTimeout" : 10000,
+  "soapActionURI" : null,
+  "packageName" : "com.completeprofileproject.services.countryinfoservice",
+  "httpHeaders" : { }
+}

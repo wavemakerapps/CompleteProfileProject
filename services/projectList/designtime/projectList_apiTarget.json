@@ -1,0 +1,204 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "2.0",
+    "x-WM-USE_PROXY_FOR_WEB" : true,
+    "x-WM-USE_PROXY_FOR_MOBILE" : true,
+    "x-WM-API_ID" : "effa3631-9e02-4262-847a-c6caad56dbee",
+    "x-WM-SERVICE_ID" : "wavemakeronline",
+    "x-WM-SERVICE_TYPE" : "RestService"
+  },
+  "host" : "stage-studio.wavemakeronline.com",
+  "basePath" : "/edn-services",
+  "tags" : [ {
+    "name" : "RestServiceVirtualController",
+    "description" : "Rest service swagger documentation"
+  } ],
+  "schemes" : [ "https" ],
+  "paths" : {
+    "/rest/users/projects/list" : {
+      "get" : {
+        "tags" : [ "RestServiceVirtualController" ],
+        "operationId" : "projectList_RestServiceVirtualController-invoke",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "Cookie",
+          "in" : "header",
+          "description" : "Cookie",
+          "required" : false,
+          "type" : "string",
+          "items" : {
+            "type" : "string"
+          },
+          "x-WM-EDITABLE" : true,
+          "x-WM-FULLY_QUALIFIED_TYPE" : "java.lang.String"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/RootResponseROOTEntryItem"
+              },
+              "x-WM-IS_LIST" : true
+            }
+          }
+        },
+        "x-WM-METHOD_NAME" : "invoke",
+        "x-WM-ACCESS_SPECIFIER" : "APP_ONLY"
+      },
+      "x-WM-BASE_PATH" : "/rest/users/projects/list",
+      "x-WM-TAG" : "RestServiceVirtualController",
+      "x-WM-RELATIVE_PATH" : "",
+      "x-WM-COMPLETE_PATH" : "${rest.projectList.scheme}://${rest.projectList.host}${rest.projectList.basepath}/rest/users/projects/list"
+    }
+  },
+  "definitions" : {
+    "permissions" : {
+      "required" : [ "copy", "delete", "deploy", "export", "owner", "pushToExternalVcs" ],
+      "properties" : {
+        "owner" : {
+          "type" : "boolean"
+        },
+        "copy" : {
+          "type" : "boolean"
+        },
+        "export" : {
+          "type" : "boolean"
+        },
+        "delete" : {
+          "type" : "boolean"
+        },
+        "deploy" : {
+          "type" : "boolean"
+        },
+        "pushToExternalVcs" : {
+          "type" : "boolean"
+        }
+      },
+      "x-WM-FULLY_QUALIFIED_NAME" : "projectList.permissions",
+      "x-WM-TAGS" : [ "RestServiceVirtualController" ]
+    },
+    "RootResponseROOTEntryItem" : {
+      "required" : [ "accessibility", "active", "createdAt", "createdByUserId", "description", "displayName", "icon", "id", "lastAccessedDate", "lastModifiedAt", "lastModifiedByUserId", "mappingStatus", "markedDelete", "name", "noOfTeams", "noOfUsers", "permissions", "platformType", "projectAppUrl", "projectId", "projectKey", "projectShellId", "projectType", "role", "sampleApp", "status", "studioProjectId", "subscriptionState", "templateName", "version", "visibility" ],
+      "properties" : {
+        "sampleApp" : {
+          "type" : "boolean"
+        },
+        "lastModifiedAt" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "role" : {
+          "type" : "string"
+        },
+        "accessibility" : {
+          "type" : "boolean"
+        },
+        "displayName" : {
+          "type" : "string"
+        },
+        "studioProjectId" : {
+          "type" : "string"
+        },
+        "icon" : {
+          "type" : "string"
+        },
+        "projectType" : {
+          "type" : "string"
+        },
+        "platformType" : {
+          "type" : "string"
+        },
+        "description" : {
+          "type" : "string"
+        },
+        "subscriptionState" : {
+          "type" : "string"
+        },
+        "mappingStatus" : {
+          "type" : "string"
+        },
+        "createdAt" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "projectKey" : {
+          "type" : "string"
+        },
+        "permissions" : {
+          "$ref" : "#/definitions/permissions"
+        },
+        "id" : {
+          "type" : "string"
+        },
+        "markedDelete" : {
+          "type" : "boolean"
+        },
+        "createdByUserId" : {
+          "type" : "string"
+        },
+        "projectShellId" : {
+          "type" : "string"
+        },
+        "visibility" : {
+          "type" : "string"
+        },
+        "lastAccessedDate" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "active" : {
+          "type" : "boolean"
+        },
+        "noOfTeams" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "version" : {
+          "type" : "string"
+        },
+        "lastModifiedByUserId" : {
+          "type" : "string"
+        },
+        "templateName" : {
+          "type" : "string"
+        },
+        "projectAppUrl" : {
+          "type" : "string"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "noOfUsers" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "projectId" : {
+          "type" : "string"
+        },
+        "status" : {
+          "type" : "string"
+        }
+      },
+      "x-WM-FULLY_QUALIFIED_NAME" : "projectList.RootResponseROOTEntryItem",
+      "x-WM-TAGS" : [ "RestServiceVirtualController" ]
+    },
+    "RootResponse" : {
+      "required" : [ "RootResponseROOT" ],
+      "properties" : {
+        "RootResponseROOT" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/RootResponseROOTEntryItem"
+          },
+          "x-WM-IS_LIST" : true
+        }
+      },
+      "x-WM-FULLY_QUALIFIED_NAME" : "projectList.RootResponse",
+      "x-WM-TAGS" : [ "RestServiceVirtualController" ]
+    }
+  }
+}

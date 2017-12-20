@@ -1,0 +1,36 @@
+{
+  "endpointAddress" : "https://www.googleapis.com/oauth2/v1/userinfo",
+  "method" : "GET",
+  "headers" : {
+    "Authorization" : [ "Bearer ya29.GmYmBQ19dGeAZ_8qtogrgvu6LvficdYNhLn79L5y9liJp9EsrTLy_CO8tHFv8OwnwNqwwwMj-exd6DWEVHYhczPNx9f9fXHk9NhvXnSwAJwRRa0OA89Cz1fjjh8iok8XGbDPjUxtiG0" ]
+  },
+  "redirectEnabled" : true,
+  "requestBody" : "",
+  "queryParams" : { },
+  "authDetails" : {
+    "providerId" : "google",
+    "type" : "OAUTH2"
+  },
+  "contentType" : "application/json",
+  "multiParamInfoList" : null,
+  "sampleHttpResponseDetails" : {
+    "statusCode" : 200,
+    "headers" : {
+      "Cache-Control" : [ "no-cache, no-store, max-age=0, must-revalidate" ],
+      "Pragma" : [ "no-cache" ],
+      "Expires" : [ "Mon, 01 Jan 1990 00:00:00 GMT" ],
+      "Date" : [ "Mon, 18 Dec 2017 09:53:23 GMT" ],
+      "Vary" : [ "Origin", "X-Origin" ],
+      "Content-Type" : [ "application/json; charset=UTF-8" ],
+      "X-Content-Type-Options" : [ "nosniff" ],
+      "X-Frame-Options" : [ "SAMEORIGIN" ],
+      "X-XSS-Protection" : [ "1; mode=block" ],
+      "Server" : [ "GSE" ],
+      "Alt-Svc" : [ "hq=\":443\"; ma=2592000; quic=51303431; quic=51303339; quic=51303338; quic=51303337; quic=51303335,quic=\":443\"; ma=2592000; v=\"41,39,38,37,35\"" ],
+      "Transfer-Encoding" : [ "chunked" ]
+    },
+    "responseBody" : "{\"id\":\"109462032523621889002\",\"name\":\"wavemaker wavemaker\",\"given_name\":\"wavemaker\",\"family_name\":\"wavemaker\",\"picture\":\"https://lh5.googleusercontent.com/-qsEORT3MXnY/AAAAAAAAAAI/AAAAAAAAAA4/n1n5YjjQ8P8/photo.jpg\",\"locale\":\"en\"}",
+    "convertedResponse" : null
+  },
+  "proxy" : null
+}

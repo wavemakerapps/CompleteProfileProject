@@ -1,0 +1,19 @@
+{
+  "url" : "ldap://52.12.227.219",
+  "domain" : null,
+  "rootDn" : "dc=example,dc=com",
+  "userSearchPattern" : "(&(objectClass=user)(userPrincipalName={0}))",
+  "testUsername" : null,
+  "testPassword" : null,
+  "groupSearchDisabled" : false,
+  "roleProvider" : "Active Directory",
+  "groupRoleAttribute" : "memberOf",
+  "roleModel" : null,
+  "roleEntity" : null,
+  "roleTable" : null,
+  "roleUsername" : null,
+  "roleProperty" : null,
+  "useRolesQuery" : false,
+  "roleQuery" : "",
+  "queryType" : "HQL"
+}
