@@ -1,0 +1,204 @@
+{
+  "basePath" : "${rest.wavemakeronline2.basepath}",
+  "paths" : {
+    "/rest/users/projects/list" : {
+      "x-WM-BASE_PATH" : "/rest/users/projects/list",
+      "x-WM-TAG" : "RestServiceVirtualController",
+      "x-WM-RELATIVE_PATH" : "",
+      "get" : {
+        "x-WM-METHOD_NAME" : "invoke",
+        "x-WM-ACCESS_SPECIFIER" : "APP_ONLY",
+        "produces" : [ "application/json" ],
+        "operationId" : "wavemakeronline2_RestServiceVirtualController-invoke",
+        "responses" : {
+          "200" : {
+            "schema" : {
+              "x-WM-IS_LIST" : true,
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/RootResponseROOTEntryItem"
+              }
+            },
+            "description" : "Success"
+          }
+        },
+        "parameters" : [ {
+          "x-WM-EDITABLE" : true,
+          "in" : "header",
+          "name" : "Cookie",
+          "description" : "Cookie",
+          "type" : "string",
+          "items" : {
+            "type" : "string"
+          },
+          "x-WM-FULLY_QUALIFIED_TYPE" : "java.lang.String",
+          "required" : false
+        } ],
+        "tags" : [ "RestServiceVirtualController" ],
+        "consumes" : [ "application/json" ]
+      },
+      "x-WM-COMPLETE_PATH" : "${rest.wavemakeronline2.scheme}://${rest.wavemakeronline2.host}${rest.wavemakeronline2.basepath}/rest/users/projects/list"
+    }
+  },
+  "host" : "${rest.wavemakeronline2.host}",
+  "schemes" : [ "${rest.wavemakeronline2.scheme}" ],
+  "definitions" : {
+    "permissions" : {
+      "x-WM-FULLY_QUALIFIED_NAME" : "wavemakeronline2.permissions",
+      "x-WM-TAGS" : [ "RestServiceVirtualController" ],
+      "required" : [ "copy", "delete", "deploy", "export", "owner", "pushToExternalVcs" ],
+      "properties" : {
+        "owner" : {
+          "type" : "boolean"
+        },
+        "copy" : {
+          "type" : "boolean"
+        },
+        "export" : {
+          "type" : "boolean"
+        },
+        "delete" : {
+          "type" : "boolean"
+        },
+        "deploy" : {
+          "type" : "boolean"
+        },
+        "pushToExternalVcs" : {
+          "type" : "boolean"
+        }
+      }
+    },
+    "RootResponseROOTEntryItem" : {
+      "x-WM-FULLY_QUALIFIED_NAME" : "wavemakeronline2.RootResponseROOTEntryItem",
+      "x-WM-TAGS" : [ "RestServiceVirtualController" ],
+      "required" : [ "accessibility", "active", "createdAt", "createdByUserId", "description", "displayName", "icon", "id", "lastAccessedDate", "lastModifiedAt", "lastModifiedByUserId", "mappingStatus", "markedDelete", "name", "noOfTeams", "noOfUsers", "permissions", "platformType", "projectAppUrl", "projectId", "projectKey", "projectShellId", "projectType", "role", "sampleApp", "status", "studioProjectId", "subscriptionState", "templateName", "version", "visibility" ],
+      "properties" : {
+        "sampleApp" : {
+          "type" : "boolean"
+        },
+        "lastModifiedAt" : {
+          "format" : "int64",
+          "type" : "integer"
+        },
+        "role" : {
+          "type" : "string"
+        },
+        "accessibility" : {
+          "type" : "boolean"
+        },
+        "displayName" : {
+          "type" : "string"
+        },
+        "studioProjectId" : {
+          "type" : "string"
+        },
+        "icon" : {
+          "type" : "string"
+        },
+        "projectType" : {
+          "type" : "string"
+        },
+        "platformType" : {
+          "type" : "string"
+        },
+        "description" : {
+          "type" : "string"
+        },
+        "subscriptionState" : {
+          "type" : "string"
+        },
+        "mappingStatus" : {
+          "type" : "string"
+        },
+        "createdAt" : {
+          "format" : "int64",
+          "type" : "integer"
+        },
+        "projectKey" : {
+          "type" : "string"
+        },
+        "permissions" : {
+          "$ref" : "#/definitions/permissions"
+        },
+        "id" : {
+          "type" : "string"
+        },
+        "markedDelete" : {
+          "type" : "boolean"
+        },
+        "createdByUserId" : {
+          "type" : "string"
+        },
+        "projectShellId" : {
+          "type" : "string"
+        },
+        "visibility" : {
+          "type" : "string"
+        },
+        "lastAccessedDate" : {
+          "format" : "int64",
+          "type" : "integer"
+        },
+        "active" : {
+          "type" : "boolean"
+        },
+        "noOfTeams" : {
+          "format" : "int32",
+          "type" : "integer"
+        },
+        "version" : {
+          "type" : "string"
+        },
+        "lastModifiedByUserId" : {
+          "type" : "string"
+        },
+        "templateName" : {
+          "type" : "string"
+        },
+        "projectAppUrl" : {
+          "type" : "string"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "noOfUsers" : {
+          "format" : "int32",
+          "type" : "integer"
+        },
+        "projectId" : {
+          "type" : "string"
+        },
+        "status" : {
+          "type" : "string"
+        }
+      }
+    },
+    "RootResponse" : {
+      "x-WM-FULLY_QUALIFIED_NAME" : "wavemakeronline2.RootResponse",
+      "x-WM-TAGS" : [ "RestServiceVirtualController" ],
+      "required" : [ "RootResponseROOT" ],
+      "properties" : {
+        "RootResponseROOT" : {
+          "x-WM-IS_LIST" : true,
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/RootResponseROOTEntryItem"
+          }
+        }
+      }
+    }
+  },
+  "swagger" : "2.0",
+  "info" : {
+    "x-WM-USE_PROXY_FOR_WEB" : true,
+    "x-WM-USE_PROXY_FOR_MOBILE" : true,
+    "x-WM-API_ID" : "01fa1f65-f5e4-4e96-b70e-d8dc9548ab27",
+    "x-WM-SERVICE_ID" : "wavemakeronline2",
+    "version" : "2.0",
+    "x-WM-SERVICE_TYPE" : "RestService"
+  },
+  "tags" : [ {
+    "name" : "RestServiceVirtualController",
+    "description" : "Rest service swagger documentation"
+  } ]
+}

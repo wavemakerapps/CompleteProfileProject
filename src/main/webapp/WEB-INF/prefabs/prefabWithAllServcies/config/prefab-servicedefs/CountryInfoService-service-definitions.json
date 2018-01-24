@@ -1,0 +1,25 @@
+{
+  "CountryInfoServiceController_fullCountryInfoAllCountries" : {
+    "id" : "CountryInfoServiceController_fullCountryInfoAllCountries",
+    "service" : "CountryInfoService",
+    "controller" : "CountryInfoServiceController",
+    "operationType" : "com.prefabwithallservcies.services.countryinfoservice.FullCountryInfoAllCountriesResponse",
+    "type" : "com.prefabwithallservcies.services.countryinfoservice.FullCountryInfoAllCountriesResponse",
+    "wmServiceOperationInfo" : {
+      "name" : "fullCountryInfoAllCountries",
+      "methodType" : "get",
+      "relativePath" : "/countryInfo/fullCountryInfoAllCountries",
+      "directPath" : "/countryInfo/fullCountryInfoAllCountries",
+      "httpMethod" : "get",
+      "parameters" : [ ],
+      "definitions" : { },
+      "produces" : null,
+      "consumes" : null,
+      "proxySettings" : {
+        "web" : true,
+        "mobile" : true
+      },
+      "securityDefinitions" : null
+    }
+  }
+}
