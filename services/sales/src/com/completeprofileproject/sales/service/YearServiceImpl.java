@@ -51,9 +51,7 @@ public class YearServiceImpl implements YearService {
     @Override
 	public Year create(Year year) {
         LOGGER.debug("Creating a new Year with information: {}", year);
-
-        Year yearCreated = this.wmGenericDao.create(year);
-        return yearCreated;
+        return this.wmGenericDao.create(year);
     }
 
 	@Transactional(readOnly = true, value = "salesTransactionManager")
@@ -80,6 +78,8 @@ public class YearServiceImpl implements YearService {
 	@Override
 	public Year update(Year year) throws EntityNotFoundException {
         LOGGER.debug("Updating Year with information: {}", year);
+
+
         this.wmGenericDao.update(year);
 
         Integer yearId = year.getId();

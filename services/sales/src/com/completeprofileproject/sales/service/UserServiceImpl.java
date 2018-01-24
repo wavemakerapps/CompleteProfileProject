@@ -51,9 +51,7 @@ public class UserServiceImpl implements UserService {
     @Override
 	public User create(User user) {
         LOGGER.debug("Creating a new User with information: {}", user);
-
-        User userCreated = this.wmGenericDao.create(user);
-        return userCreated;
+        return this.wmGenericDao.create(user);
     }
 
 	@Transactional(readOnly = true, value = "salesTransactionManager")
@@ -80,6 +78,8 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public User update(User user) throws EntityNotFoundException {
         LOGGER.debug("Updating User with information: {}", user);
+
+
         this.wmGenericDao.update(user);
 
         Integer userIdInstance = user.getUserId();

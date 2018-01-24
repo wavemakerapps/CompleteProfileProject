@@ -6,5 +6,9 @@
   "requestTimeout" : 10000,
   "soapActionURI" : null,
   "packageName" : "com.completeprofileproject.services.countryinfoservice",
-  "httpHeaders" : { }
+  "httpHeaders" : { },
+  "wsdlLocation" : "",
+  "wsdlSource" : "FILE",
+  "bindingsFile" : "",
+  "wsdlFile" : "CountryInfoService.wsdl"
 }

@@ -51,9 +51,7 @@ public class AccountManagerServiceImpl implements AccountManagerService {
     @Override
 	public AccountManager create(AccountManager accountManager) {
         LOGGER.debug("Creating a new AccountManager with information: {}", accountManager);
-
-        AccountManager accountManagerCreated = this.wmGenericDao.create(accountManager);
-        return accountManagerCreated;
+        return this.wmGenericDao.create(accountManager);
     }
 
 	@Transactional(readOnly = true, value = "salesTransactionManager")
@@ -80,6 +78,8 @@ public class AccountManagerServiceImpl implements AccountManagerService {
 	@Override
 	public AccountManager update(AccountManager accountManager) throws EntityNotFoundException {
         LOGGER.debug("Updating AccountManager with information: {}", accountManager);
+
+
         this.wmGenericDao.update(accountManager);
 
         Integer accountmanagerId = accountManager.getId();

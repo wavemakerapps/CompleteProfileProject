@@ -51,9 +51,7 @@ public class ActionItemServiceImpl implements ActionItemService {
     @Override
 	public ActionItem create(ActionItem actionItem) {
         LOGGER.debug("Creating a new ActionItem with information: {}", actionItem);
-
-        ActionItem actionItemCreated = this.wmGenericDao.create(actionItem);
-        return actionItemCreated;
+        return this.wmGenericDao.create(actionItem);
     }
 
 	@Transactional(readOnly = true, value = "salesTransactionManager")
@@ -80,6 +78,8 @@ public class ActionItemServiceImpl implements ActionItemService {
 	@Override
 	public ActionItem update(ActionItem actionItem) throws EntityNotFoundException {
         LOGGER.debug("Updating ActionItem with information: {}", actionItem);
+
+
         this.wmGenericDao.update(actionItem);
 
         Integer actionitemId = actionItem.getId();

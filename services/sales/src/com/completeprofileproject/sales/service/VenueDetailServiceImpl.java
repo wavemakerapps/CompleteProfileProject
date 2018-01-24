@@ -51,9 +51,7 @@ public class VenueDetailServiceImpl implements VenueDetailService {
     @Override
 	public VenueDetail create(VenueDetail venueDetail) {
         LOGGER.debug("Creating a new VenueDetail with information: {}", venueDetail);
-
-        VenueDetail venueDetailCreated = this.wmGenericDao.create(venueDetail);
-        return venueDetailCreated;
+        return this.wmGenericDao.create(venueDetail);
     }
 
 	@Transactional(readOnly = true, value = "salesTransactionManager")
@@ -80,6 +78,8 @@ public class VenueDetailServiceImpl implements VenueDetailService {
 	@Override
 	public VenueDetail update(VenueDetail venueDetail) throws EntityNotFoundException {
         LOGGER.debug("Updating VenueDetail with information: {}", venueDetail);
+
+
         this.wmGenericDao.update(venueDetail);
 
         Integer venuedetailId = venueDetail.getId();

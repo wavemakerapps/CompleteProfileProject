@@ -51,9 +51,7 @@ public class Table8ServiceImpl implements Table8Service {
     @Override
 	public Table8 create(Table8 table8) {
         LOGGER.debug("Creating a new Table8 with information: {}", table8);
-
-        Table8 table8Created = this.wmGenericDao.create(table8);
-        return table8Created;
+        return this.wmGenericDao.create(table8);
     }
 
 	@Transactional(readOnly = true, value = "salesTransactionManager")
@@ -80,6 +78,8 @@ public class Table8ServiceImpl implements Table8Service {
 	@Override
 	public Table8 update(Table8 table8) throws EntityNotFoundException {
         LOGGER.debug("Updating Table8 with information: {}", table8);
+
+
         this.wmGenericDao.update(table8);
 
         Integer table8Id = table8.getId();

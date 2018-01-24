@@ -51,9 +51,7 @@ public class Table33ServiceImpl implements Table33Service {
     @Override
 	public Table33 create(Table33 table33) {
         LOGGER.debug("Creating a new Table33 with information: {}", table33);
-
-        Table33 table33Created = this.wmGenericDao.create(table33);
-        return table33Created;
+        return this.wmGenericDao.create(table33);
     }
 
 	@Transactional(readOnly = true, value = "salesTransactionManager")
@@ -80,6 +78,8 @@ public class Table33ServiceImpl implements Table33Service {
 	@Override
 	public Table33 update(Table33 table33) throws EntityNotFoundException {
         LOGGER.debug("Updating Table33 with information: {}", table33);
+
+
         this.wmGenericDao.update(table33);
 
         Integer table33Id = table33.getId();

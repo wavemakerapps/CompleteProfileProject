@@ -29,7 +29,11 @@
     "enabled" : false,
     "maxAge" : 1600,
     "allowCredentials" : false,
-    "pathEntries" : [ ]
+    "pathEntries" : [ {
+      "name" : "root",
+      "path" : "/**",
+      "allowedOrigins" : "*"
+    } ]
   },
   "tokenAuthConfig" : {
     "enabled" : true,

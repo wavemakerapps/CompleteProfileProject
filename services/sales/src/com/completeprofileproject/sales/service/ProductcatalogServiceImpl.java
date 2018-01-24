@@ -51,9 +51,7 @@ public class ProductcatalogServiceImpl implements ProductcatalogService {
     @Override
 	public Productcatalog create(Productcatalog productcatalog) {
         LOGGER.debug("Creating a new Productcatalog with information: {}", productcatalog);
-
-        Productcatalog productcatalogCreated = this.wmGenericDao.create(productcatalog);
-        return productcatalogCreated;
+        return this.wmGenericDao.create(productcatalog);
     }
 
 	@Transactional(readOnly = true, value = "salesTransactionManager")
@@ -80,6 +78,8 @@ public class ProductcatalogServiceImpl implements ProductcatalogService {
 	@Override
 	public Productcatalog update(Productcatalog productcatalog) throws EntityNotFoundException {
         LOGGER.debug("Updating Productcatalog with information: {}", productcatalog);
+
+
         this.wmGenericDao.update(productcatalog);
 
         Integer productcatalogId = productcatalog.getProductId();

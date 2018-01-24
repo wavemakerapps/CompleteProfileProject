@@ -51,9 +51,7 @@ public class AllTypesServiceImpl implements AllTypesService {
     @Override
 	public AllTypes create(AllTypes allTypes) {
         LOGGER.debug("Creating a new AllTypes with information: {}", allTypes);
-
-        AllTypes allTypesCreated = this.wmGenericDao.create(allTypes);
-        return allTypesCreated;
+        return this.wmGenericDao.create(allTypes);
     }
 
 	@Transactional(readOnly = true, value = "testProfileDBTransactionManager")
@@ -80,6 +78,8 @@ public class AllTypesServiceImpl implements AllTypesService {
 	@Override
 	public AllTypes update(AllTypes allTypes) throws EntityNotFoundException {
         LOGGER.debug("Updating AllTypes with information: {}", allTypes);
+
+
         this.wmGenericDao.update(allTypes);
 
         Integer alltypesId = allTypes.getId();

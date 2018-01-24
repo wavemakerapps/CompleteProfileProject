@@ -51,9 +51,7 @@ public class SaleServiceImpl implements SaleService {
     @Override
 	public Sale create(Sale sale) {
         LOGGER.debug("Creating a new Sale with information: {}", sale);
-
-        Sale saleCreated = this.wmGenericDao.create(sale);
-        return saleCreated;
+        return this.wmGenericDao.create(sale);
     }
 
 	@Transactional(readOnly = true, value = "salesTransactionManager")
@@ -80,6 +78,8 @@ public class SaleServiceImpl implements SaleService {
 	@Override
 	public Sale update(Sale sale) throws EntityNotFoundException {
         LOGGER.debug("Updating Sale with information: {}", sale);
+
+
         this.wmGenericDao.update(sale);
 
         Integer saleId = sale.getId();

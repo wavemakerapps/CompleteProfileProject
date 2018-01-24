@@ -51,9 +51,7 @@ public class ClientServiceImpl implements ClientService {
     @Override
 	public Client create(Client client) {
         LOGGER.debug("Creating a new Client with information: {}", client);
-
-        Client clientCreated = this.wmGenericDao.create(client);
-        return clientCreated;
+        return this.wmGenericDao.create(client);
     }
 
 	@Transactional(readOnly = true, value = "salesTransactionManager")
@@ -80,6 +78,8 @@ public class ClientServiceImpl implements ClientService {
 	@Override
 	public Client update(Client client) throws EntityNotFoundException {
         LOGGER.debug("Updating Client with information: {}", client);
+
+
         this.wmGenericDao.update(client);
 
         Integer clientId = client.getId();

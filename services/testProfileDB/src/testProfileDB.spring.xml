@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans" xmlns:p="http://www.springframework.org/schema/p"
-       xmlns:mvc="http://www.springframework.org/schema/mvc"
+<beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd   http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
     <context:component-scan base-package="com.completeprofileproject.testprofiledb.controller,com.completeprofileproject.testprofiledb.service,com.completeprofileproject.testprofiledb.dao"/>
     <bean class="com.wavemaker.runtime.data.spring.WMPropertyPlaceholderConfigurer">
@@ -39,10 +38,11 @@
 
     <bean id="testProfileDBEntityInterceptor" class="com.wavemaker.runtime.data.interceptors.WMEntityInterceptor"/>
 
-    <bean id="testProfileDBSessionFactory" class="com.wavemaker.runtime.data.factory.TypeResolverSessionFactoryBean">
+    <bean id="testProfileDBSessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
         <property name="dataSource" ref="testProfileDBDataSource"/>
         <property name="packagesToScan" value="com.completeprofileproject.testprofiledb"/>
         <property name="entityInterceptor" ref="testProfileDBEntityInterceptor"/>
+        <property name="entityTypeFilters" ref="nonHistoryEntitiesFilter"/>
         <property name="mappingResources">
             <list>
                 <value>
@@ -51,19 +51,33 @@
             </list>
         </property>
 
-        <property name="customTypes">
-            <array value-type="com.wavemaker.runtime.data.CustomType">
-                <ref bean="dateTimeCustomType"/>
-            </array>
-        </property>
-        <property name="hibernateProperties">
+        <property name="hibernateProperties" ref="testProfileDBHibernateProperties"/>
+    </bean>
+    <bean id="testProfileDBTransactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+        <property name="sessionFactory" ref="testProfileDBSessionFactory"/>
+        <property name="defaultTimeout" value="${testProfileDB.transactionTimeout}"/>
+    </bean>
+    <bean id="testProfileDBTemplate" class="org.springframework.orm.hibernate5.HibernateTemplate">
+        <property name="sessionFactory" ref="testProfileDBSessionFactory"/>
+    </bean>
+
+    <bean id="testProfileDBWMQueryExecutor" class="com.wavemaker.runtime.data.dao.query.WMQueryExecutorImpl">
+        <property name="template" ref="testProfileDBTemplate"/>
+    </bean>
+    <bean id="testProfileDBWMProcedureExecutor" class="com.wavemaker.runtime.data.dao.procedure.WMProcedureExecutorImpl">
+        <property name="template" ref="testProfileDBTemplate"/>
+        <property name="serviceId" value="testProfileDB"/>
+    </bean>
+
+    <bean id="testProfileDBHibernateProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+        <property name="properties">
             <props>
                 <prop key="hibernate.dialect">
                 ${testProfileDB.dialect}
                 </prop>
-                <prop key="hibernate.default_schema">
-                ${testProfileDB.schemaName}
-                </prop>
+                    <prop key="hibernate.default_schema">
+                    ${testProfileDB.schemaName}
+                    </prop>
                 <prop key="hibernate.show_sql">
                     false
                 </prop>
@@ -82,31 +96,7 @@
             </props>
         </property>
     </bean>
-    <bean id="testProfileDBTransactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
-        <property name="sessionFactory" ref="testProfileDBSessionFactory"/>
-        <property name="defaultTimeout" value="${testProfileDB.transactionTimeout}"/>
-    </bean>
-    <bean id="testProfileDBTemplate" class="org.springframework.orm.hibernate5.HibernateTemplate">
-        <property name="sessionFactory" ref="testProfileDBSessionFactory"/>
-    </bean>
-    <bean id="testProfileDBWMQueryExecutor" class="com.wavemaker.runtime.data.dao.query.WMQueryExecutorImpl">
-        <property name="template" ref="testProfileDBTemplate"/>
-    </bean>
-    <bean id="testProfileDBWMProcedureExecutor" class="com.wavemaker.runtime.data.dao.procedure.WMProcedureExecutorImpl">
-        <property name="template" ref="testProfileDBTemplate"/>
-        <property name="serviceId" value="testProfileDB" />
-    </bean>
 
-    <bean id="persistentLocalDateTimeType" class="com.wavemaker.commons.data.type.WMPersistentLocalDateTime"/>
-    <bean id="dateTimeCustomType" class="com.wavemaker.runtime.data.CustomType">
-        <property name="type" ref="persistentLocalDateTimeType"/>
-        <property name="keys">
-            <list>
-                <value>DateTime</value>
-                <value>org.joda.time.LocalDateTime</value>
-            </list>
-        </property>
-    </bean>
     <bean id="testProfileDBPageableHandlerMethodResolver" class="com.wavemaker.runtime.resolver.WMPageableHandlerMethodArgumentResolver" >
         <property name="pageParameterName" value="page"/>
         <property name="sizeParameterName" value="size"/>
