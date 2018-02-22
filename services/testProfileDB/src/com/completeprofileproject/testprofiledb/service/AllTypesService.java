@@ -74,6 +74,13 @@ public interface AllTypesService {
 	 */
 	AllTypes delete(Integer alltypesId) throws EntityNotFoundException;
 
+    /**
+	 * Deletes an existing AllTypes with the given object.
+	 *
+	 * @param allTypes The instance of the AllTypes to be deleted; value cannot be null.
+	 */
+	void delete(AllTypes allTypes);
+
 	/**
 	 * Find all AllTypes matching the given QueryFilter(s).
      * All the QueryFilter(s) are ANDed to filter the results.

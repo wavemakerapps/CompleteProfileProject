@@ -51,26 +51,29 @@ public class ClientServiceImpl implements ClientService {
     @Override
 	public Client create(Client client) {
         LOGGER.debug("Creating a new Client with information: {}", client);
-        return this.wmGenericDao.create(client);
+
+        Client clientCreated = this.wmGenericDao.create(client);
+        // reloading object from database to get database defined & server defined values.
+        return this.wmGenericDao.refresh(clientCreated);
     }
 
 	@Transactional(readOnly = true, value = "salesTransactionManager")
 	@Override
 	public Client getById(Integer clientId) throws EntityNotFoundException {
         LOGGER.debug("Finding Client by id: {}", clientId);
-        Client client = this.wmGenericDao.findById(clientId);
-        if (client == null){
-            LOGGER.debug("No Client found with id: {}", clientId);
-            throw new EntityNotFoundException(String.valueOf(clientId));
-        }
-        return client;
+        return this.wmGenericDao.findById(clientId);
     }
 
     @Transactional(readOnly = true, value = "salesTransactionManager")
 	@Override
 	public Client findById(Integer clientId) {
         LOGGER.debug("Finding Client by id: {}", clientId);
-        return this.wmGenericDao.findById(clientId);
+        try {
+            return this.wmGenericDao.findById(clientId);
+        } catch(EntityNotFoundException ex) {
+            LOGGER.debug("No Client found with id: {}", clientId, ex);
+            return null;
+        }
     }
 
 
@@ -79,12 +82,10 @@ public class ClientServiceImpl implements ClientService {
 	public Client update(Client client) throws EntityNotFoundException {
         LOGGER.debug("Updating Client with information: {}", client);
 
-
         this.wmGenericDao.update(client);
+        this.wmGenericDao.refresh(client);
 
-        Integer clientId = client.getId();
-
-        return this.wmGenericDao.findById(clientId);
+        return client;
     }
 
     @Transactional(value = "salesTransactionManager")
@@ -98,6 +99,13 @@ public class ClientServiceImpl implements ClientService {
         }
         this.wmGenericDao.delete(deleted);
         return deleted;
+    }
+
+    @Transactional(value = "salesTransactionManager")
+	@Override
+	public void delete(Client client) {
+        LOGGER.debug("Deleting Client with {}", client);
+        this.wmGenericDao.delete(client);
     }
 
 	@Transactional(readOnly = true, value = "salesTransactionManager")

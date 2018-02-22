@@ -51,26 +51,29 @@ public class YearServiceImpl implements YearService {
     @Override
 	public Year create(Year year) {
         LOGGER.debug("Creating a new Year with information: {}", year);
-        return this.wmGenericDao.create(year);
+
+        Year yearCreated = this.wmGenericDao.create(year);
+        // reloading object from database to get database defined & server defined values.
+        return this.wmGenericDao.refresh(yearCreated);
     }
 
 	@Transactional(readOnly = true, value = "salesTransactionManager")
 	@Override
 	public Year getById(Integer yearId) throws EntityNotFoundException {
         LOGGER.debug("Finding Year by id: {}", yearId);
-        Year year = this.wmGenericDao.findById(yearId);
-        if (year == null){
-            LOGGER.debug("No Year found with id: {}", yearId);
-            throw new EntityNotFoundException(String.valueOf(yearId));
-        }
-        return year;
+        return this.wmGenericDao.findById(yearId);
     }
 
     @Transactional(readOnly = true, value = "salesTransactionManager")
 	@Override
 	public Year findById(Integer yearId) {
         LOGGER.debug("Finding Year by id: {}", yearId);
-        return this.wmGenericDao.findById(yearId);
+        try {
+            return this.wmGenericDao.findById(yearId);
+        } catch(EntityNotFoundException ex) {
+            LOGGER.debug("No Year found with id: {}", yearId, ex);
+            return null;
+        }
     }
 
 
@@ -79,12 +82,10 @@ public class YearServiceImpl implements YearService {
 	public Year update(Year year) throws EntityNotFoundException {
         LOGGER.debug("Updating Year with information: {}", year);
 
-
         this.wmGenericDao.update(year);
+        this.wmGenericDao.refresh(year);
 
-        Integer yearId = year.getId();
-
-        return this.wmGenericDao.findById(yearId);
+        return year;
     }
 
     @Transactional(value = "salesTransactionManager")
@@ -98,6 +99,13 @@ public class YearServiceImpl implements YearService {
         }
         this.wmGenericDao.delete(deleted);
         return deleted;
+    }
+
+    @Transactional(value = "salesTransactionManager")
+	@Override
+	public void delete(Year year) {
+        LOGGER.debug("Deleting Year with {}", year);
+        this.wmGenericDao.delete(year);
     }
 
 	@Transactional(readOnly = true, value = "salesTransactionManager")

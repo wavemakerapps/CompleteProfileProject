@@ -37,7 +37,9 @@
     } ],
     "constraints" : [ ],
     "entityName" : "Table33",
+    "filter" : null,
     "fullyQualifiedName" : "com.completeprofileproject.sales.Table33",
+    "ignoreRefreshAfterInsert" : false,
     "name" : "TABLE33",
     "oldName" : "TABLE33",
     "primaryKey" : {
@@ -118,7 +120,9 @@
     } ],
     "constraints" : [ ],
     "entityName" : "Table8",
+    "filter" : null,
     "fullyQualifiedName" : "com.completeprofileproject.sales.Table8",
+    "ignoreRefreshAfterInsert" : false,
     "name" : "TABLE8",
     "oldName" : "TABLE8",
     "primaryKey" : {
@@ -228,7 +232,9 @@
     } ],
     "constraints" : [ ],
     "entityName" : "User",
+    "filter" : null,
     "fullyQualifiedName" : "com.completeprofileproject.sales.User",
+    "ignoreRefreshAfterInsert" : false,
     "name" : "User",
     "oldName" : "User",
     "primaryKey" : {
@@ -309,7 +315,9 @@
     } ],
     "constraints" : [ ],
     "entityName" : "AccountManager",
+    "filter" : null,
     "fullyQualifiedName" : "com.completeprofileproject.sales.AccountManager",
+    "ignoreRefreshAfterInsert" : false,
     "name" : "accountManager",
     "oldName" : "accountManager",
     "primaryKey" : {
@@ -564,7 +572,9 @@
     } ],
     "constraints" : [ ],
     "entityName" : "ActionItem",
+    "filter" : null,
     "fullyQualifiedName" : "com.completeprofileproject.sales.ActionItem",
+    "ignoreRefreshAfterInsert" : false,
     "name" : "action_item",
     "oldName" : "action_item",
     "primaryKey" : {
@@ -645,7 +655,9 @@
     } ],
     "constraints" : [ ],
     "entityName" : "Client",
+    "filter" : null,
     "fullyQualifiedName" : "com.completeprofileproject.sales.Client",
+    "ignoreRefreshAfterInsert" : false,
     "name" : "client",
     "oldName" : "client",
     "primaryKey" : {
@@ -755,7 +767,9 @@
     } ],
     "constraints" : [ ],
     "entityName" : "Productcatalog",
+    "filter" : null,
     "fullyQualifiedName" : "com.completeprofileproject.sales.Productcatalog",
+    "ignoreRefreshAfterInsert" : false,
     "name" : "productcatalog",
     "oldName" : "productcatalog",
     "primaryKey" : {
@@ -1010,7 +1024,9 @@
     } ],
     "constraints" : [ ],
     "entityName" : "Sale",
+    "filter" : null,
     "fullyQualifiedName" : "com.completeprofileproject.sales.Sale",
+    "ignoreRefreshAfterInsert" : false,
     "name" : "sale",
     "oldName" : "sale",
     "primaryKey" : {
@@ -1265,7 +1281,9 @@
     } ],
     "constraints" : [ ],
     "entityName" : "VenueDetail",
+    "filter" : null,
     "fullyQualifiedName" : "com.completeprofileproject.sales.VenueDetail",
+    "ignoreRefreshAfterInsert" : false,
     "name" : "venue_detail",
     "oldName" : "venue_detail",
     "primaryKey" : {
@@ -1346,7 +1364,9 @@
     } ],
     "constraints" : [ ],
     "entityName" : "Year",
+    "filter" : null,
     "fullyQualifiedName" : "com.completeprofileproject.sales.Year",
+    "ignoreRefreshAfterInsert" : false,
     "name" : "year",
     "oldName" : "year",
     "primaryKey" : {

@@ -74,6 +74,13 @@ public interface YearService {
 	 */
 	Year delete(Integer yearId) throws EntityNotFoundException;
 
+    /**
+	 * Deletes an existing Year with the given object.
+	 *
+	 * @param year The instance of the Year to be deleted; value cannot be null.
+	 */
+	void delete(Year year);
+
 	/**
 	 * Find all Years matching the given QueryFilter(s).
      * All the QueryFilter(s) are ANDed to filter the results.

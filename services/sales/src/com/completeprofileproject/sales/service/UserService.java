@@ -74,6 +74,13 @@ public interface UserService {
 	 */
 	User delete(Integer userIdInstance) throws EntityNotFoundException;
 
+    /**
+	 * Deletes an existing User with the given object.
+	 *
+	 * @param user The instance of the User to be deleted; value cannot be null.
+	 */
+	void delete(User user);
+
 	/**
 	 * Find all Users matching the given QueryFilter(s).
      * All the QueryFilter(s) are ANDed to filter the results.

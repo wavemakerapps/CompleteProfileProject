@@ -51,26 +51,29 @@ public class ActionItemServiceImpl implements ActionItemService {
     @Override
 	public ActionItem create(ActionItem actionItem) {
         LOGGER.debug("Creating a new ActionItem with information: {}", actionItem);
-        return this.wmGenericDao.create(actionItem);
+
+        ActionItem actionItemCreated = this.wmGenericDao.create(actionItem);
+        // reloading object from database to get database defined & server defined values.
+        return this.wmGenericDao.refresh(actionItemCreated);
     }
 
 	@Transactional(readOnly = true, value = "salesTransactionManager")
 	@Override
 	public ActionItem getById(Integer actionitemId) throws EntityNotFoundException {
         LOGGER.debug("Finding ActionItem by id: {}", actionitemId);
-        ActionItem actionItem = this.wmGenericDao.findById(actionitemId);
-        if (actionItem == null){
-            LOGGER.debug("No ActionItem found with id: {}", actionitemId);
-            throw new EntityNotFoundException(String.valueOf(actionitemId));
-        }
-        return actionItem;
+        return this.wmGenericDao.findById(actionitemId);
     }
 
     @Transactional(readOnly = true, value = "salesTransactionManager")
 	@Override
 	public ActionItem findById(Integer actionitemId) {
         LOGGER.debug("Finding ActionItem by id: {}", actionitemId);
-        return this.wmGenericDao.findById(actionitemId);
+        try {
+            return this.wmGenericDao.findById(actionitemId);
+        } catch(EntityNotFoundException ex) {
+            LOGGER.debug("No ActionItem found with id: {}", actionitemId, ex);
+            return null;
+        }
     }
 
 
@@ -79,12 +82,10 @@ public class ActionItemServiceImpl implements ActionItemService {
 	public ActionItem update(ActionItem actionItem) throws EntityNotFoundException {
         LOGGER.debug("Updating ActionItem with information: {}", actionItem);
 
-
         this.wmGenericDao.update(actionItem);
+        this.wmGenericDao.refresh(actionItem);
 
-        Integer actionitemId = actionItem.getId();
-
-        return this.wmGenericDao.findById(actionitemId);
+        return actionItem;
     }
 
     @Transactional(value = "salesTransactionManager")
@@ -98,6 +99,13 @@ public class ActionItemServiceImpl implements ActionItemService {
         }
         this.wmGenericDao.delete(deleted);
         return deleted;
+    }
+
+    @Transactional(value = "salesTransactionManager")
+	@Override
+	public void delete(ActionItem actionItem) {
+        LOGGER.debug("Deleting ActionItem with {}", actionItem);
+        this.wmGenericDao.delete(actionItem);
     }
 
 	@Transactional(readOnly = true, value = "salesTransactionManager")

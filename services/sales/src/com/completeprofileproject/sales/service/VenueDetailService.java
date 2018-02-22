@@ -74,6 +74,13 @@ public interface VenueDetailService {
 	 */
 	VenueDetail delete(Integer venuedetailId) throws EntityNotFoundException;
 
+    /**
+	 * Deletes an existing VenueDetail with the given object.
+	 *
+	 * @param venueDetail The instance of the VenueDetail to be deleted; value cannot be null.
+	 */
+	void delete(VenueDetail venueDetail);
+
 	/**
 	 * Find all VenueDetails matching the given QueryFilter(s).
      * All the QueryFilter(s) are ANDed to filter the results.

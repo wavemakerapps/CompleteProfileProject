@@ -41,6 +41,13 @@
             </resource>
             <resource>
                 <filtering>true</filtering>
+                <directory>services/hrdb/src</directory>
+                <excludes>
+                    <exclude>**/*.java</exclude>
+                </excludes>
+            </resource>
+            <resource>
+                <filtering>true</filtering>
                 <directory>services/projectList/src</directory>
                 <excludes>
                     <exclude>**/*.java</exclude>
@@ -154,6 +161,7 @@
                                 <source>services/MyJavaService/src</source>
                                 <source>services/authService/src</source>
                                 <source>services/googleOauth/src</source>
+                                <source>services/hrdb/src</source>
                                 <source>services/projectList/src</source>
                                 <source>services/sales/src</source>
                                 <source>services/securityService/src</source>
@@ -338,6 +346,11 @@
             <artifactId>spring-security-ldap</artifactId>
         </dependency>
         <dependency>
+            <groupId>org.hsqldb</groupId>
+            <artifactId>hsqldb</artifactId>
+            <version>2.3.3</version>
+        </dependency>
+        <dependency>
             <groupId>sqljdbc4-4.0</groupId>
             <artifactId>sqljdbc4-4.0</artifactId>
             <version>1.0</version>
@@ -374,7 +387,7 @@
         <spring.version>4.3.9.RELEASE</spring.version>
         <profile.props.file>development.properties</profile.props.file>
         <spring.security.version>4.1.2.RELEASE</spring.security.version>
-        <wavemaker.studio.version>9.2.0</wavemaker.studio.version>
+        <wavemaker.studio.version>9.2.1</wavemaker.studio.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.lib.directory>${basedir}/lib</project.lib.directory>
     </properties>

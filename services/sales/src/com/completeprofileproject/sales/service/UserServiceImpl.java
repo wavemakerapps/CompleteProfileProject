@@ -51,26 +51,29 @@ public class UserServiceImpl implements UserService {
     @Override
 	public User create(User user) {
         LOGGER.debug("Creating a new User with information: {}", user);
-        return this.wmGenericDao.create(user);
+
+        User userCreated = this.wmGenericDao.create(user);
+        // reloading object from database to get database defined & server defined values.
+        return this.wmGenericDao.refresh(userCreated);
     }
 
 	@Transactional(readOnly = true, value = "salesTransactionManager")
 	@Override
 	public User getById(Integer userIdInstance) throws EntityNotFoundException {
         LOGGER.debug("Finding User by id: {}", userIdInstance);
-        User user = this.wmGenericDao.findById(userIdInstance);
-        if (user == null){
-            LOGGER.debug("No User found with id: {}", userIdInstance);
-            throw new EntityNotFoundException(String.valueOf(userIdInstance));
-        }
-        return user;
+        return this.wmGenericDao.findById(userIdInstance);
     }
 
     @Transactional(readOnly = true, value = "salesTransactionManager")
 	@Override
 	public User findById(Integer userIdInstance) {
         LOGGER.debug("Finding User by id: {}", userIdInstance);
-        return this.wmGenericDao.findById(userIdInstance);
+        try {
+            return this.wmGenericDao.findById(userIdInstance);
+        } catch(EntityNotFoundException ex) {
+            LOGGER.debug("No User found with id: {}", userIdInstance, ex);
+            return null;
+        }
     }
 
 
@@ -79,12 +82,10 @@ public class UserServiceImpl implements UserService {
 	public User update(User user) throws EntityNotFoundException {
         LOGGER.debug("Updating User with information: {}", user);
 
-
         this.wmGenericDao.update(user);
+        this.wmGenericDao.refresh(user);
 
-        Integer userIdInstance = user.getUserId();
-
-        return this.wmGenericDao.findById(userIdInstance);
+        return user;
     }
 
     @Transactional(value = "salesTransactionManager")
@@ -98,6 +99,13 @@ public class UserServiceImpl implements UserService {
         }
         this.wmGenericDao.delete(deleted);
         return deleted;
+    }
+
+    @Transactional(value = "salesTransactionManager")
+	@Override
+	public void delete(User user) {
+        LOGGER.debug("Deleting User with {}", user);
+        this.wmGenericDao.delete(user);
     }
 
 	@Transactional(readOnly = true, value = "salesTransactionManager")

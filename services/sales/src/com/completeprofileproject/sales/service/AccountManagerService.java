@@ -74,6 +74,13 @@ public interface AccountManagerService {
 	 */
 	AccountManager delete(Integer accountmanagerId) throws EntityNotFoundException;
 
+    /**
+	 * Deletes an existing AccountManager with the given object.
+	 *
+	 * @param accountManager The instance of the AccountManager to be deleted; value cannot be null.
+	 */
+	void delete(AccountManager accountManager);
+
 	/**
 	 * Find all AccountManagers matching the given QueryFilter(s).
      * All the QueryFilter(s) are ANDed to filter the results.

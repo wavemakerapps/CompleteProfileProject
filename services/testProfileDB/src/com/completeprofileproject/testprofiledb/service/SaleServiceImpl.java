@@ -51,26 +51,29 @@ public class SaleServiceImpl implements SaleService {
     @Override
 	public Sale create(Sale sale) {
         LOGGER.debug("Creating a new Sale with information: {}", sale);
-        return this.wmGenericDao.create(sale);
+
+        Sale saleCreated = this.wmGenericDao.create(sale);
+        // reloading object from database to get database defined & server defined values.
+        return this.wmGenericDao.refresh(saleCreated);
     }
 
 	@Transactional(readOnly = true, value = "testProfileDBTransactionManager")
 	@Override
 	public Sale getById(Integer saleId) throws EntityNotFoundException {
         LOGGER.debug("Finding Sale by id: {}", saleId);
-        Sale sale = this.wmGenericDao.findById(saleId);
-        if (sale == null){
-            LOGGER.debug("No Sale found with id: {}", saleId);
-            throw new EntityNotFoundException(String.valueOf(saleId));
-        }
-        return sale;
+        return this.wmGenericDao.findById(saleId);
     }
 
     @Transactional(readOnly = true, value = "testProfileDBTransactionManager")
 	@Override
 	public Sale findById(Integer saleId) {
         LOGGER.debug("Finding Sale by id: {}", saleId);
-        return this.wmGenericDao.findById(saleId);
+        try {
+            return this.wmGenericDao.findById(saleId);
+        } catch(EntityNotFoundException ex) {
+            LOGGER.debug("No Sale found with id: {}", saleId, ex);
+            return null;
+        }
     }
 
 
@@ -79,12 +82,10 @@ public class SaleServiceImpl implements SaleService {
 	public Sale update(Sale sale) throws EntityNotFoundException {
         LOGGER.debug("Updating Sale with information: {}", sale);
 
-
         this.wmGenericDao.update(sale);
+        this.wmGenericDao.refresh(sale);
 
-        Integer saleId = sale.getId();
-
-        return this.wmGenericDao.findById(saleId);
+        return sale;
     }
 
     @Transactional(value = "testProfileDBTransactionManager")
@@ -98,6 +99,13 @@ public class SaleServiceImpl implements SaleService {
         }
         this.wmGenericDao.delete(deleted);
         return deleted;
+    }
+
+    @Transactional(value = "testProfileDBTransactionManager")
+	@Override
+	public void delete(Sale sale) {
+        LOGGER.debug("Deleting Sale with {}", sale);
+        this.wmGenericDao.delete(sale);
     }
 
 	@Transactional(readOnly = true, value = "testProfileDBTransactionManager")

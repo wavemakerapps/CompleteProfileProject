@@ -298,7 +298,9 @@
     } ],
     "constraints" : [ ],
     "entityName" : "AllTypes",
+    "filter" : null,
     "fullyQualifiedName" : "com.completeprofileproject.testprofiledb.AllTypes",
+    "ignoreRefreshAfterInsert" : false,
     "name" : "All Types",
     "oldName" : "All Types",
     "primaryKey" : {
@@ -553,7 +555,9 @@
     } ],
     "constraints" : [ ],
     "entityName" : "Sale",
+    "filter" : null,
     "fullyQualifiedName" : "com.completeprofileproject.testprofiledb.Sale",
+    "ignoreRefreshAfterInsert" : false,
     "name" : "sale",
     "oldName" : "sale",
     "primaryKey" : {

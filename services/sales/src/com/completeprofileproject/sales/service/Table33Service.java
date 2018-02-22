@@ -74,6 +74,13 @@ public interface Table33Service {
 	 */
 	Table33 delete(Integer table33Id) throws EntityNotFoundException;
 
+    /**
+	 * Deletes an existing Table33 with the given object.
+	 *
+	 * @param table33 The instance of the Table33 to be deleted; value cannot be null.
+	 */
+	void delete(Table33 table33);
+
 	/**
 	 * Find all Table33s matching the given QueryFilter(s).
      * All the QueryFilter(s) are ANDed to filter the results.

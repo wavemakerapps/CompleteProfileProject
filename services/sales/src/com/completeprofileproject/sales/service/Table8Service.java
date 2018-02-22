@@ -74,6 +74,13 @@ public interface Table8Service {
 	 */
 	Table8 delete(Integer table8Id) throws EntityNotFoundException;
 
+    /**
+	 * Deletes an existing Table8 with the given object.
+	 *
+	 * @param table8 The instance of the Table8 to be deleted; value cannot be null.
+	 */
+	void delete(Table8 table8);
+
 	/**
 	 * Find all Table8s matching the given QueryFilter(s).
      * All the QueryFilter(s) are ANDed to filter the results.

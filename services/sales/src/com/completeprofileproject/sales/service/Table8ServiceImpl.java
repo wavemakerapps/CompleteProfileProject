@@ -51,26 +51,29 @@ public class Table8ServiceImpl implements Table8Service {
     @Override
 	public Table8 create(Table8 table8) {
         LOGGER.debug("Creating a new Table8 with information: {}", table8);
-        return this.wmGenericDao.create(table8);
+
+        Table8 table8Created = this.wmGenericDao.create(table8);
+        // reloading object from database to get database defined & server defined values.
+        return this.wmGenericDao.refresh(table8Created);
     }
 
 	@Transactional(readOnly = true, value = "salesTransactionManager")
 	@Override
 	public Table8 getById(Integer table8Id) throws EntityNotFoundException {
         LOGGER.debug("Finding Table8 by id: {}", table8Id);
-        Table8 table8 = this.wmGenericDao.findById(table8Id);
-        if (table8 == null){
-            LOGGER.debug("No Table8 found with id: {}", table8Id);
-            throw new EntityNotFoundException(String.valueOf(table8Id));
-        }
-        return table8;
+        return this.wmGenericDao.findById(table8Id);
     }
 
     @Transactional(readOnly = true, value = "salesTransactionManager")
 	@Override
 	public Table8 findById(Integer table8Id) {
         LOGGER.debug("Finding Table8 by id: {}", table8Id);
-        return this.wmGenericDao.findById(table8Id);
+        try {
+            return this.wmGenericDao.findById(table8Id);
+        } catch(EntityNotFoundException ex) {
+            LOGGER.debug("No Table8 found with id: {}", table8Id, ex);
+            return null;
+        }
     }
 
 
@@ -79,12 +82,10 @@ public class Table8ServiceImpl implements Table8Service {
 	public Table8 update(Table8 table8) throws EntityNotFoundException {
         LOGGER.debug("Updating Table8 with information: {}", table8);
 
-
         this.wmGenericDao.update(table8);
+        this.wmGenericDao.refresh(table8);
 
-        Integer table8Id = table8.getId();
-
-        return this.wmGenericDao.findById(table8Id);
+        return table8;
     }
 
     @Transactional(value = "salesTransactionManager")
@@ -98,6 +99,13 @@ public class Table8ServiceImpl implements Table8Service {
         }
         this.wmGenericDao.delete(deleted);
         return deleted;
+    }
+
+    @Transactional(value = "salesTransactionManager")
+	@Override
+	public void delete(Table8 table8) {
+        LOGGER.debug("Deleting Table8 with {}", table8);
+        this.wmGenericDao.delete(table8);
     }
 
 	@Transactional(readOnly = true, value = "salesTransactionManager")

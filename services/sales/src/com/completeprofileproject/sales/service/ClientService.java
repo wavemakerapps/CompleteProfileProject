@@ -74,6 +74,13 @@ public interface ClientService {
 	 */
 	Client delete(Integer clientId) throws EntityNotFoundException;
 
+    /**
+	 * Deletes an existing Client with the given object.
+	 *
+	 * @param client The instance of the Client to be deleted; value cannot be null.
+	 */
+	void delete(Client client);
+
 	/**
 	 * Find all Clients matching the given QueryFilter(s).
      * All the QueryFilter(s) are ANDed to filter the results.

@@ -51,26 +51,29 @@ public class Table33ServiceImpl implements Table33Service {
     @Override
 	public Table33 create(Table33 table33) {
         LOGGER.debug("Creating a new Table33 with information: {}", table33);
-        return this.wmGenericDao.create(table33);
+
+        Table33 table33Created = this.wmGenericDao.create(table33);
+        // reloading object from database to get database defined & server defined values.
+        return this.wmGenericDao.refresh(table33Created);
     }
 
 	@Transactional(readOnly = true, value = "salesTransactionManager")
 	@Override
 	public Table33 getById(Integer table33Id) throws EntityNotFoundException {
         LOGGER.debug("Finding Table33 by id: {}", table33Id);
-        Table33 table33 = this.wmGenericDao.findById(table33Id);
-        if (table33 == null){
-            LOGGER.debug("No Table33 found with id: {}", table33Id);
-            throw new EntityNotFoundException(String.valueOf(table33Id));
-        }
-        return table33;
+        return this.wmGenericDao.findById(table33Id);
     }
 
     @Transactional(readOnly = true, value = "salesTransactionManager")
 	@Override
 	public Table33 findById(Integer table33Id) {
         LOGGER.debug("Finding Table33 by id: {}", table33Id);
-        return this.wmGenericDao.findById(table33Id);
+        try {
+            return this.wmGenericDao.findById(table33Id);
+        } catch(EntityNotFoundException ex) {
+            LOGGER.debug("No Table33 found with id: {}", table33Id, ex);
+            return null;
+        }
     }
 
 
@@ -79,12 +82,10 @@ public class Table33ServiceImpl implements Table33Service {
 	public Table33 update(Table33 table33) throws EntityNotFoundException {
         LOGGER.debug("Updating Table33 with information: {}", table33);
 
-
         this.wmGenericDao.update(table33);
+        this.wmGenericDao.refresh(table33);
 
-        Integer table33Id = table33.getId();
-
-        return this.wmGenericDao.findById(table33Id);
+        return table33;
     }
 
     @Transactional(value = "salesTransactionManager")
@@ -98,6 +99,13 @@ public class Table33ServiceImpl implements Table33Service {
         }
         this.wmGenericDao.delete(deleted);
         return deleted;
+    }
+
+    @Transactional(value = "salesTransactionManager")
+	@Override
+	public void delete(Table33 table33) {
+        LOGGER.debug("Deleting Table33 with {}", table33);
+        this.wmGenericDao.delete(table33);
     }
 
 	@Transactional(readOnly = true, value = "salesTransactionManager")

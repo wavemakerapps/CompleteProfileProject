@@ -51,26 +51,29 @@ public class ProductcatalogServiceImpl implements ProductcatalogService {
     @Override
 	public Productcatalog create(Productcatalog productcatalog) {
         LOGGER.debug("Creating a new Productcatalog with information: {}", productcatalog);
-        return this.wmGenericDao.create(productcatalog);
+
+        Productcatalog productcatalogCreated = this.wmGenericDao.create(productcatalog);
+        // reloading object from database to get database defined & server defined values.
+        return this.wmGenericDao.refresh(productcatalogCreated);
     }
 
 	@Transactional(readOnly = true, value = "salesTransactionManager")
 	@Override
 	public Productcatalog getById(Integer productcatalogId) throws EntityNotFoundException {
         LOGGER.debug("Finding Productcatalog by id: {}", productcatalogId);
-        Productcatalog productcatalog = this.wmGenericDao.findById(productcatalogId);
-        if (productcatalog == null){
-            LOGGER.debug("No Productcatalog found with id: {}", productcatalogId);
-            throw new EntityNotFoundException(String.valueOf(productcatalogId));
-        }
-        return productcatalog;
+        return this.wmGenericDao.findById(productcatalogId);
     }
 
     @Transactional(readOnly = true, value = "salesTransactionManager")
 	@Override
 	public Productcatalog findById(Integer productcatalogId) {
         LOGGER.debug("Finding Productcatalog by id: {}", productcatalogId);
-        return this.wmGenericDao.findById(productcatalogId);
+        try {
+            return this.wmGenericDao.findById(productcatalogId);
+        } catch(EntityNotFoundException ex) {
+            LOGGER.debug("No Productcatalog found with id: {}", productcatalogId, ex);
+            return null;
+        }
     }
 
 
@@ -79,12 +82,10 @@ public class ProductcatalogServiceImpl implements ProductcatalogService {
 	public Productcatalog update(Productcatalog productcatalog) throws EntityNotFoundException {
         LOGGER.debug("Updating Productcatalog with information: {}", productcatalog);
 
-
         this.wmGenericDao.update(productcatalog);
+        this.wmGenericDao.refresh(productcatalog);
 
-        Integer productcatalogId = productcatalog.getProductId();
-
-        return this.wmGenericDao.findById(productcatalogId);
+        return productcatalog;
     }
 
     @Transactional(value = "salesTransactionManager")
@@ -98,6 +99,13 @@ public class ProductcatalogServiceImpl implements ProductcatalogService {
         }
         this.wmGenericDao.delete(deleted);
         return deleted;
+    }
+
+    @Transactional(value = "salesTransactionManager")
+	@Override
+	public void delete(Productcatalog productcatalog) {
+        LOGGER.debug("Deleting Productcatalog with {}", productcatalog);
+        this.wmGenericDao.delete(productcatalog);
     }
 
 	@Transactional(readOnly = true, value = "salesTransactionManager")

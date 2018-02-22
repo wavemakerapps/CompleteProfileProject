@@ -74,6 +74,13 @@ public interface ProductcatalogService {
 	 */
 	Productcatalog delete(Integer productcatalogId) throws EntityNotFoundException;
 
+    /**
+	 * Deletes an existing Productcatalog with the given object.
+	 *
+	 * @param productcatalog The instance of the Productcatalog to be deleted; value cannot be null.
+	 */
+	void delete(Productcatalog productcatalog);
+
 	/**
 	 * Find all Productcatalogs matching the given QueryFilter(s).
      * All the QueryFilter(s) are ANDed to filter the results.

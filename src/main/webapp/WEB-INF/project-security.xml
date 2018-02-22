@@ -51,6 +51,20 @@
         <property name="policyFile" value="wm-xss-policies.xml"/>
         <property name="xssFilterStrategy" value="NONE"/>
     </bean>
+    <bean class="com.wavemaker.commons.model.security.CorsConfig" id="corsConfig">
+        <property name="enabled" value="${general.cors.enabled}"/>
+        <property name="maxAge" value="${general.cors.maxAge}"/>
+        <property name="allowCredentials" value="${general.cors.allowCredentials}"/>
+        <property name="pathEntries">
+            <list>
+                <bean class="com.wavemaker.commons.model.security.PathEntry" id="root">
+                    <property name="name" value="root"/>
+                    <property name="path" value="/**"/>
+                    <property name="allowedOrigins" value="${general.cors.root.allowedOrigins}"/>
+                </bean>
+            </list>
+        </property>
+    </bean>
     <security:global-method-security pre-post-annotations="enabled" authentication-manager-ref="authenticationManager"/>
     <security:http pattern="/app.css" security="none"/>
     <security:http pattern="/app.js" security="none"/>
@@ -147,7 +161,7 @@
     <bean class="com.wavemaker.runtime.security.rememberme.WMAppRememberMeServices" id="rememberMeServices">
         <constructor-arg value="WM_APP_KEY"/>
     </bean>
-    <bean class="org.springframework.security.web.authentication.rememberme.RememberMeAuthenticationFilter" id="rememberMeAuthFilter">
+    <bean class="com.wavemaker.runtime.security.rememberme.WMRememberMeAuthenticationFilter" id="rememberMeAuthFilter">
         <constructor-arg ref="authenticationManager"/>
         <constructor-arg ref="rememberMeServices"/>
     </bean>
@@ -248,19 +262,6 @@
     <bean class="com.wavemaker.runtime.security.provider.ad.DefaultActiveDirectoryAuthoritiesPopulator" id="adAuthoritiesPopulator">
         <property name="groupRoleAttribute">
             <value>${providers.ad.groupRoleAttribute}</value>
-        </property>
-    </bean>
-    <bean class="com.wavemaker.commons.model.security.CorsConfig" id="corsConfig">
-        <property name="enabled" value="${general.cors.enabled}"/>
-        <property name="maxAge" value="${general.cors.maxAge}"/>
-        <property name="pathEntries">
-            <list>
-                <bean class="com.wavemaker.commons.model.security.PathEntry" id="root">
-                    <property name="name" value="root"/>
-                    <property name="path" value="/**"/>
-                    <property name="allowedOrigins" value="${general.cors.root.allowedOrigins}"/>
-                </bean>
-            </list>
         </property>
     </bean>
 </beans>

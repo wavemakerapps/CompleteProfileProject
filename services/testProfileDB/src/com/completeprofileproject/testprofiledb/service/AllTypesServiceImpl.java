@@ -51,26 +51,29 @@ public class AllTypesServiceImpl implements AllTypesService {
     @Override
 	public AllTypes create(AllTypes allTypes) {
         LOGGER.debug("Creating a new AllTypes with information: {}", allTypes);
-        return this.wmGenericDao.create(allTypes);
+
+        AllTypes allTypesCreated = this.wmGenericDao.create(allTypes);
+        // reloading object from database to get database defined & server defined values.
+        return this.wmGenericDao.refresh(allTypesCreated);
     }
 
 	@Transactional(readOnly = true, value = "testProfileDBTransactionManager")
 	@Override
 	public AllTypes getById(Integer alltypesId) throws EntityNotFoundException {
         LOGGER.debug("Finding AllTypes by id: {}", alltypesId);
-        AllTypes allTypes = this.wmGenericDao.findById(alltypesId);
-        if (allTypes == null){
-            LOGGER.debug("No AllTypes found with id: {}", alltypesId);
-            throw new EntityNotFoundException(String.valueOf(alltypesId));
-        }
-        return allTypes;
+        return this.wmGenericDao.findById(alltypesId);
     }
 
     @Transactional(readOnly = true, value = "testProfileDBTransactionManager")
 	@Override
 	public AllTypes findById(Integer alltypesId) {
         LOGGER.debug("Finding AllTypes by id: {}", alltypesId);
-        return this.wmGenericDao.findById(alltypesId);
+        try {
+            return this.wmGenericDao.findById(alltypesId);
+        } catch(EntityNotFoundException ex) {
+            LOGGER.debug("No AllTypes found with id: {}", alltypesId, ex);
+            return null;
+        }
     }
 
 
@@ -79,12 +82,10 @@ public class AllTypesServiceImpl implements AllTypesService {
 	public AllTypes update(AllTypes allTypes) throws EntityNotFoundException {
         LOGGER.debug("Updating AllTypes with information: {}", allTypes);
 
-
         this.wmGenericDao.update(allTypes);
+        this.wmGenericDao.refresh(allTypes);
 
-        Integer alltypesId = allTypes.getId();
-
-        return this.wmGenericDao.findById(alltypesId);
+        return allTypes;
     }
 
     @Transactional(value = "testProfileDBTransactionManager")
@@ -98,6 +99,13 @@ public class AllTypesServiceImpl implements AllTypesService {
         }
         this.wmGenericDao.delete(deleted);
         return deleted;
+    }
+
+    @Transactional(value = "testProfileDBTransactionManager")
+	@Override
+	public void delete(AllTypes allTypes) {
+        LOGGER.debug("Deleting AllTypes with {}", allTypes);
+        this.wmGenericDao.delete(allTypes);
     }
 
 	@Transactional(readOnly = true, value = "testProfileDBTransactionManager")

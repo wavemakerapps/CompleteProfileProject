@@ -51,26 +51,29 @@ public class VenueDetailServiceImpl implements VenueDetailService {
     @Override
 	public VenueDetail create(VenueDetail venueDetail) {
         LOGGER.debug("Creating a new VenueDetail with information: {}", venueDetail);
-        return this.wmGenericDao.create(venueDetail);
+
+        VenueDetail venueDetailCreated = this.wmGenericDao.create(venueDetail);
+        // reloading object from database to get database defined & server defined values.
+        return this.wmGenericDao.refresh(venueDetailCreated);
     }
 
 	@Transactional(readOnly = true, value = "salesTransactionManager")
 	@Override
 	public VenueDetail getById(Integer venuedetailId) throws EntityNotFoundException {
         LOGGER.debug("Finding VenueDetail by id: {}", venuedetailId);
-        VenueDetail venueDetail = this.wmGenericDao.findById(venuedetailId);
-        if (venueDetail == null){
-            LOGGER.debug("No VenueDetail found with id: {}", venuedetailId);
-            throw new EntityNotFoundException(String.valueOf(venuedetailId));
-        }
-        return venueDetail;
+        return this.wmGenericDao.findById(venuedetailId);
     }
 
     @Transactional(readOnly = true, value = "salesTransactionManager")
 	@Override
 	public VenueDetail findById(Integer venuedetailId) {
         LOGGER.debug("Finding VenueDetail by id: {}", venuedetailId);
-        return this.wmGenericDao.findById(venuedetailId);
+        try {
+            return this.wmGenericDao.findById(venuedetailId);
+        } catch(EntityNotFoundException ex) {
+            LOGGER.debug("No VenueDetail found with id: {}", venuedetailId, ex);
+            return null;
+        }
     }
 
 
@@ -79,12 +82,10 @@ public class VenueDetailServiceImpl implements VenueDetailService {
 	public VenueDetail update(VenueDetail venueDetail) throws EntityNotFoundException {
         LOGGER.debug("Updating VenueDetail with information: {}", venueDetail);
 
-
         this.wmGenericDao.update(venueDetail);
+        this.wmGenericDao.refresh(venueDetail);
 
-        Integer venuedetailId = venueDetail.getId();
-
-        return this.wmGenericDao.findById(venuedetailId);
+        return venueDetail;
     }
 
     @Transactional(value = "salesTransactionManager")
@@ -98,6 +99,13 @@ public class VenueDetailServiceImpl implements VenueDetailService {
         }
         this.wmGenericDao.delete(deleted);
         return deleted;
+    }
+
+    @Transactional(value = "salesTransactionManager")
+	@Override
+	public void delete(VenueDetail venueDetail) {
+        LOGGER.debug("Deleting VenueDetail with {}", venueDetail);
+        this.wmGenericDao.delete(venueDetail);
     }
 
 	@Transactional(readOnly = true, value = "salesTransactionManager")

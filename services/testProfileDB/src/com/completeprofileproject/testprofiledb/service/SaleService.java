@@ -74,6 +74,13 @@ public interface SaleService {
 	 */
 	Sale delete(Integer saleId) throws EntityNotFoundException;
 
+    /**
+	 * Deletes an existing Sale with the given object.
+	 *
+	 * @param sale The instance of the Sale to be deleted; value cannot be null.
+	 */
+	void delete(Sale sale);
+
 	/**
 	 * Find all Sales matching the given QueryFilter(s).
      * All the QueryFilter(s) are ANDed to filter the results.

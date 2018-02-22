@@ -74,6 +74,13 @@ public interface ActionItemService {
 	 */
 	ActionItem delete(Integer actionitemId) throws EntityNotFoundException;
 
+    /**
+	 * Deletes an existing ActionItem with the given object.
+	 *
+	 * @param actionItem The instance of the ActionItem to be deleted; value cannot be null.
+	 */
+	void delete(ActionItem actionItem);
+
 	/**
 	 * Find all ActionItems matching the given QueryFilter(s).
      * All the QueryFilter(s) are ANDed to filter the results.

@@ -22,46 +22,64 @@ public class MyJavaController {
     private MyJavaService myJavaService;
 
     @RequestMapping(value = "/booleanPValue", method = RequestMethod.GET)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "")
     public boolean getBooleanPValue() {
         return myJavaService.getBooleanPValue();
     }
 
     @RequestMapping(value = "/bytePValue", method = RequestMethod.GET)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "")
     public byte getBytePValue() {
         return myJavaService.getBytePValue();
     }
 
     @RequestMapping(value = "/charPValue", method = RequestMethod.GET)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "")
     public char getCharPValue() {
         return myJavaService.getCharPValue();
     }
 
     @RequestMapping(value = "/datePValue", method = RequestMethod.GET)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "")
     public Date getDatePValue() {
         return myJavaService.getDatePValue();
     }
 
     @RequestMapping(value = "/doublePValue", method = RequestMethod.GET)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "")
     public double getDoublePValue() {
         return myJavaService.getDoublePValue();
     }
 
     @RequestMapping(value = "/floatPValue", method = RequestMethod.GET)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "")
     public float getFloatPValue() {
         return myJavaService.getFloatPValue();
     }
 
     @RequestMapping(value = "/intPValue", method = RequestMethod.GET)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "")
     public int getIntPValue() {
         return myJavaService.getIntPValue();
     }
 
     @RequestMapping(value = "/longPValue", method = RequestMethod.GET)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "")
     public long getLongPValue() {
         return myJavaService.getLongPValue();
     }
 
     @RequestMapping(value = "/shortPValue", method = RequestMethod.GET)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "")
     public short getshortPValue() {
         return myJavaService.getshortPValue();
     }

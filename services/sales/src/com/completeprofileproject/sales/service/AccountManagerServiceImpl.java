@@ -51,26 +51,29 @@ public class AccountManagerServiceImpl implements AccountManagerService {
     @Override
 	public AccountManager create(AccountManager accountManager) {
         LOGGER.debug("Creating a new AccountManager with information: {}", accountManager);
-        return this.wmGenericDao.create(accountManager);
+
+        AccountManager accountManagerCreated = this.wmGenericDao.create(accountManager);
+        // reloading object from database to get database defined & server defined values.
+        return this.wmGenericDao.refresh(accountManagerCreated);
     }
 
 	@Transactional(readOnly = true, value = "salesTransactionManager")
 	@Override
 	public AccountManager getById(Integer accountmanagerId) throws EntityNotFoundException {
         LOGGER.debug("Finding AccountManager by id: {}", accountmanagerId);
-        AccountManager accountManager = this.wmGenericDao.findById(accountmanagerId);
-        if (accountManager == null){
-            LOGGER.debug("No AccountManager found with id: {}", accountmanagerId);
-            throw new EntityNotFoundException(String.valueOf(accountmanagerId));
-        }
-        return accountManager;
+        return this.wmGenericDao.findById(accountmanagerId);
     }
 
     @Transactional(readOnly = true, value = "salesTransactionManager")
 	@Override
 	public AccountManager findById(Integer accountmanagerId) {
         LOGGER.debug("Finding AccountManager by id: {}", accountmanagerId);
-        return this.wmGenericDao.findById(accountmanagerId);
+        try {
+            return this.wmGenericDao.findById(accountmanagerId);
+        } catch(EntityNotFoundException ex) {
+            LOGGER.debug("No AccountManager found with id: {}", accountmanagerId, ex);
+            return null;
+        }
     }
 
 
@@ -79,12 +82,10 @@ public class AccountManagerServiceImpl implements AccountManagerService {
 	public AccountManager update(AccountManager accountManager) throws EntityNotFoundException {
         LOGGER.debug("Updating AccountManager with information: {}", accountManager);
 
-
         this.wmGenericDao.update(accountManager);
+        this.wmGenericDao.refresh(accountManager);
 
-        Integer accountmanagerId = accountManager.getId();
-
-        return this.wmGenericDao.findById(accountmanagerId);
+        return accountManager;
     }
 
     @Transactional(value = "salesTransactionManager")
@@ -98,6 +99,13 @@ public class AccountManagerServiceImpl implements AccountManagerService {
         }
         this.wmGenericDao.delete(deleted);
         return deleted;
+    }
+
+    @Transactional(value = "salesTransactionManager")
+	@Override
+	public void delete(AccountManager accountManager) {
+        LOGGER.debug("Deleting AccountManager with {}", accountManager);
+        this.wmGenericDao.delete(accountManager);
     }
 
 	@Transactional(readOnly = true, value = "salesTransactionManager")
