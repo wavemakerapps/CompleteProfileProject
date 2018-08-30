@@ -10,5 +10,5 @@ var _WM_APP_PROPERTIES = {
   "supportedLanguages" : "en",
   "timeFormat" : "",
   "type" : "PREFAB",
-  "version" : "1.06"
+  "version" : "1.08"
 };

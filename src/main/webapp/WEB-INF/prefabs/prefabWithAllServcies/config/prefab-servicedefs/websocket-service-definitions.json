@@ -19,7 +19,7 @@
         "web" : false,
         "mobile" : true
       },
-      "securityDefinitions" : null
+      "securityDefinitions" : [ ]
     }
   }
 }

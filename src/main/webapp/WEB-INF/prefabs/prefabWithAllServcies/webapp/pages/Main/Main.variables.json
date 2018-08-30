@@ -29,9 +29,9 @@
     "category" : "wm.ServiceVariable",
     "dataBinding" : [ ],
     "type" : "boolean",
-    "service" : "MyJavaService",
+    "service" : "PrefabJavaService",
     "operation" : "getBooleanPValue",
-    "operationId" : "MyJavaController_getBooleanPValue",
+    "operationId" : "PrefabJavaController_getBooleanPValue",
     "operationType" : "get",
     "serviceType" : "JavaService",
     "dataSet" : [ ],
@@ -51,9 +51,9 @@
     "category" : "wm.ServiceVariable",
     "dataBinding" : [ ],
     "type" : "string",
-    "service" : "MyJavaService",
+    "service" : "PrefabJavaService",
     "operation" : "getBytePValue",
-    "operationId" : "MyJavaController_getBytePValue",
+    "operationId" : "PrefabJavaController_getBytePValue",
     "operationType" : "get",
     "serviceType" : "JavaService",
     "dataSet" : [ ],
@@ -64,7 +64,7 @@
     "inFlightBehavior" : "executeLast",
     "transformationRequired" : false,
     "saveInPhonegap" : false,
-    "controller" : "MyJava"
+    "controller" : "PrefabJava"
   },
   "getCharPValue" : {
     "_id" : "wm-getCharPValue-wm.ServiceVariable-1516779677206",
@@ -73,9 +73,9 @@
     "category" : "wm.ServiceVariable",
     "dataBinding" : [ ],
     "type" : "string",
-    "service" : "MyJavaService",
+    "service" : "PrefabJavaService",
     "operation" : "getCharPValue",
-    "operationId" : "MyJavaController_getCharPValue",
+    "operationId" : "PrefabJavaController_getCharPValue",
     "operationType" : "get",
     "serviceType" : "JavaService",
     "dataSet" : [ ],
@@ -86,7 +86,7 @@
     "inFlightBehavior" : "executeLast",
     "transformationRequired" : false,
     "saveInPhonegap" : false,
-    "controller" : "MyJava"
+    "controller" : "PrefabJava"
   },
   "getDatePValue" : {
     "_id" : "wm-getDatePValue-wm.ServiceVariable-1516779731598",
@@ -95,9 +95,9 @@
     "category" : "wm.ServiceVariable",
     "dataBinding" : [ ],
     "type" : "string",
-    "service" : "MyJavaService",
+    "service" : "PrefabJavaService",
     "operation" : "getDatePValue",
-    "operationId" : "MyJavaController_getDatePValue",
+    "operationId" : "PrefabJavaController_getDatePValue",
     "operationType" : "get",
     "serviceType" : "JavaService",
     "dataSet" : [ ],
@@ -108,7 +108,7 @@
     "inFlightBehavior" : "executeLast",
     "transformationRequired" : false,
     "saveInPhonegap" : false,
-    "controller" : "MyJava"
+    "controller" : "PrefabJava"
   },
   "getDoublePValue" : {
     "_id" : "wm-getDoublePValue-wm.ServiceVariable-1516779661237",
@@ -117,9 +117,9 @@
     "category" : "wm.ServiceVariable",
     "dataBinding" : [ ],
     "type" : "number",
-    "service" : "MyJavaService",
+    "service" : "PrefabJavaService",
     "operation" : "getDoublePValue",
-    "operationId" : "MyJavaController_getDoublePValue",
+    "operationId" : "PrefabJavaController_getDoublePValue",
     "operationType" : "get",
     "serviceType" : "JavaService",
     "dataSet" : [ ],
@@ -130,7 +130,7 @@
     "inFlightBehavior" : "executeLast",
     "transformationRequired" : false,
     "saveInPhonegap" : false,
-    "controller" : "MyJava"
+    "controller" : "PrefabJava"
   },
   "getFloatPValue" : {
     "_id" : "wm-getFloatPValue-wm.ServiceVariable-1516779641078",
@@ -139,9 +139,9 @@
     "category" : "wm.ServiceVariable",
     "dataBinding" : [ ],
     "type" : "number",
-    "service" : "MyJavaService",
+    "service" : "PrefabJavaService",
     "operation" : "getFloatPValue",
-    "operationId" : "MyJavaController_getFloatPValue",
+    "operationId" : "PrefabJavaController_getFloatPValue",
     "operationType" : "get",
     "serviceType" : "JavaService",
     "dataSet" : [ ],
@@ -152,7 +152,7 @@
     "inFlightBehavior" : "executeLast",
     "transformationRequired" : false,
     "saveInPhonegap" : false,
-    "controller" : "MyJava"
+    "controller" : "PrefabJava"
   },
   "getIntPValue" : {
     "_id" : "wm-getIntPValue-wm.ServiceVariable-1516779585087",
@@ -161,9 +161,9 @@
     "category" : "wm.ServiceVariable",
     "dataBinding" : [ ],
     "type" : "integer",
-    "service" : "MyJavaService",
+    "service" : "PrefabJavaService",
     "operation" : "getIntPValue",
-    "operationId" : "MyJavaController_getIntPValue",
+    "operationId" : "PrefabJavaController_getIntPValue",
     "operationType" : "get",
     "serviceType" : "JavaService",
     "dataSet" : [ ],
@@ -174,7 +174,7 @@
     "inFlightBehavior" : "executeLast",
     "transformationRequired" : false,
     "saveInPhonegap" : false,
-    "controller" : "MyJava"
+    "controller" : "PrefabJava"
   },
   "getLongPValue" : {
     "_id" : "wm-getLongPValue-wm.ServiceVariable-1516779622790",
@@ -183,9 +183,9 @@
     "category" : "wm.ServiceVariable",
     "dataBinding" : [ ],
     "type" : "integer",
-    "service" : "MyJavaService",
+    "service" : "PrefabJavaService",
     "operation" : "getLongPValue",
-    "operationId" : "MyJavaController_getLongPValue",
+    "operationId" : "PrefabJavaController_getLongPValue",
     "operationType" : "get",
     "serviceType" : "JavaService",
     "dataSet" : [ ],
@@ -196,7 +196,7 @@
     "inFlightBehavior" : "executeLast",
     "transformationRequired" : false,
     "saveInPhonegap" : false,
-    "controller" : "MyJava"
+    "controller" : "PrefabJava"
   },
   "getshortPValue" : {
     "_id" : "wm-getshortPValue-wm.ServiceVariable-1516779603654",
@@ -205,9 +205,9 @@
     "category" : "wm.ServiceVariable",
     "dataBinding" : [ ],
     "type" : "integer",
-    "service" : "MyJavaService",
+    "service" : "PrefabJavaService",
     "operation" : "getshortPValue",
-    "operationId" : "MyJavaController_getshortPValue",
+    "operationId" : "PrefabJavaController_getshortPValue",
     "operationType" : "get",
     "serviceType" : "JavaService",
     "dataSet" : [ ],
@@ -218,7 +218,33 @@
     "inFlightBehavior" : "executeLast",
     "transformationRequired" : false,
     "saveInPhonegap" : false,
-    "controller" : "MyJava"
+    "controller" : "PrefabJava"
+  },
+  "JSService" : {
+    "_id" : "wm-JSService-wm.ServiceVariable-1535618946978",
+    "name" : "JSService",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "dataBinding" : [ {
+      "target" : "name",
+      "value" : "sample",
+      "type" : "string"
+    } ],
+    "type" : "string",
+    "service" : "PrefabJavaService",
+    "operation" : "sampleJavaOperation",
+    "operationId" : "PrefabJavaController_sampleJavaOperation",
+    "operationType" : "get",
+    "serviceType" : "JavaService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "startUpdate" : true,
+    "autoUpdate" : true,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "PrefabJava"
   },
   "serviceVariable1" : {
     "_id" : "wm-serviceVariable1-wm.ServiceVariable-1512997544803",
@@ -231,9 +257,9 @@
       "type" : "string"
     } ],
     "type" : "string",
-    "service" : "MyJavaService",
+    "service" : "PrefabJavaService",
     "operation" : "sampleJavaOperation",
-    "operationId" : "MyJavaController_sampleJavaOperation",
+    "operationId" : "PrefabJavaController_sampleJavaOperation",
     "operationType" : "get",
     "serviceType" : "JavaService",
     "dataSet" : [ ],
@@ -412,11 +438,11 @@
     "tableType" : "TABLE",
     "properties" : [ ],
     "relatedTables" : [ ],
-    "package" : "com.prefabwithallservcies.testprofiledb.AllTypes",
     "filterExpressions" : {
       "condition" : "AND",
       "rules" : [ ]
-    }
+    },
+    "package" : "com.prefabwithallservcies.testprofiledb.AllTypes"
   },
   "Wavemakeronline2Invoke" : {
     "_id" : "wm-Wavemakeronline2Invoke-wm.ServiceVariable-1512997510386",
