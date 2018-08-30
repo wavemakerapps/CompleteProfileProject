@@ -90,7 +90,7 @@
       } ],
       "definitions" : { },
       "produces" : [ "application/json" ],
-      "consumes" : [ ],
+      "consumes" : null,
       "proxySettings" : {
         "web" : true,
         "mobile" : true

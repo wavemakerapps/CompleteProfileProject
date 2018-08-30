@@ -237,7 +237,6 @@ public class Employee implements Serializable {
 
         this.employeeByManagerId = employeeByManagerId;
     }
-
     // ignoring self relation properties to avoid circular loops & unwanted fields from the related entity.
     @JsonIgnoreProperties({"employeeByManagerId", "employeesForManagerId"})
     @JsonInclude(Include.NON_EMPTY)
@@ -265,14 +264,10 @@ public class Employee implements Serializable {
     @PostPersist
     public void onPostPersist() {
         if(employeesForManagerId != null) {
-            for(Employee employee : employeesForManagerId) {
-                employee.setEmployeeByManagerId(this);
-            }
+            employeesForManagerId.forEach(_employee -> _employee.setEmployeeByManagerId(this));
         }
         if(vacations != null) {
-            for(Vacation vacation : vacations) {
-                vacation.setEmployee(this);
-            }
+            vacations.forEach(_vacation -> _vacation.setEmployee(this));
         }
     }
 
@@ -289,4 +284,3 @@ public class Employee implements Serializable {
         return Objects.hash(getEmpId());
     }
 }
-

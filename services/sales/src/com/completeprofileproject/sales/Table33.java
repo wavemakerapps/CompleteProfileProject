@@ -50,4 +50,3 @@ public class Table33 implements Serializable {
         return Objects.hash(getId());
     }
 }
-

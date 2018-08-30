@@ -6957,8 +6957,7 @@ button.wm-app .close {
   border-bottom-color: #ddd;
   background-color: #fff;
 }
-.wm-app .nav-tabs > li > a,
-.wm-app .nav-tabs > li .app-menu a {
+.wm-app .nav-tabs > li > a {
   color: #7a7a7a;
   text-transform: uppercase;
   background-color: transparent;
@@ -6968,8 +6967,7 @@ button.wm-app .close {
   margin-right: 0;
   border-color: transparent;
 }
-.wm-app .nav-tabs > li > a:after,
-.wm-app .nav-tabs > li .app-menu a:after {
+.wm-app .nav-tabs > li > a:after {
   content: "";
   height: 2px;
   position: absolute;
@@ -6987,22 +6985,18 @@ button.wm-app .close {
   transform: scale(0);
 }
 .wm-app .nav-tabs > li > a:hover,
-.wm-app .nav-tabs > li .app-menu a:hover,
-.wm-app .nav-tabs > li > a:focus,
-.wm-app .nav-tabs > li .app-menu a:focus {
+.wm-app .nav-tabs > li > a:focus {
   outline: none;
   color: #7a7a7a;
   background-color: transparent;
   border-color: transparent;
   border-bottom-color: transparent;
 }
-.wm-app .nav-tabs > li.active > a,
-.wm-app .nav-tabs > li.active .app-menu a {
+.wm-app .nav-tabs > li.active > a {
   border-color: transparent;
   color: #000;
 }
-.wm-app .nav-tabs > li.active > a:after,
-.wm-app .nav-tabs > li.active .app-menu a:after {
+.wm-app .nav-tabs > li.active > a:after {
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   -o-transform: scale(1);
@@ -7010,12 +7004,15 @@ button.wm-app .close {
   background: #448AFF;
 }
 .wm-app .nav-tabs > li.active > a:hover,
-.wm-app .nav-tabs > li.active .app-menu a:hover,
-.wm-app .nav-tabs > li.active > a:focus,
-.wm-app .nav-tabs > li.active .app-menu a:focus {
+.wm-app .nav-tabs > li.active > a:focus {
   outline: none;
   border-color: transparent;
   color: #000;
+}
+.wm-app .nav-tabs > li.app-nav-item > .dropdown > a.dropdown-toggle {
+  padding: 12px;
+  color: #7a7a7a;
+  text-transform: uppercase;
 }
 .wm-app .app-tabs:focus,
 .wm-app .tab-body:focus {

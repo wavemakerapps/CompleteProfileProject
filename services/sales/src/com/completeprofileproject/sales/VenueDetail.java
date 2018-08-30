@@ -120,4 +120,3 @@ public class VenueDetail implements Serializable {
         return Objects.hash(getId());
     }
 }
-

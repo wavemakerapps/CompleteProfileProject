@@ -8,7 +8,6 @@
       "get" : {
         "x-WM-METHOD_NAME" : "invoke",
         "x-WM-ACCESS_SPECIFIER" : "APP_ONLY",
-        "produces" : [ "application/json" ],
         "operationId" : "wavemakeronline2_RestServiceVirtualController-invoke",
         "responses" : {
           "200" : {
@@ -192,8 +191,8 @@
   "info" : {
     "x-WM-USE_PROXY_FOR_WEB" : true,
     "x-WM-USE_PROXY_FOR_MOBILE" : true,
-    "x-WM-API_ID" : "01fa1f65-f5e4-4e96-b70e-d8dc9548ab27",
-    "x-WM-SERVICE_ID" : "wavemakeronline2",
+    "x-WM-API_ID" : "9626c435-0f46-4c21-b690-99437dbeb07f",
+    "x-WM-SERVICE_ID" : "wavemakeronline",
     "version" : "2.0",
     "x-WM-SERVICE_TYPE" : "RestService"
   },

@@ -76,7 +76,7 @@
                 ${testProfileDB.dialect}
                 </prop>
                     <prop key="hibernate.default_schema">
-                    ${testProfileDB.schemaName}
+                    `${testProfileDB.schemaName}`
                     </prop>
                 <prop key="hibernate.show_sql">
                     false

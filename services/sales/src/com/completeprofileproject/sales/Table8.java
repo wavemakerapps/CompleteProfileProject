@@ -59,4 +59,3 @@ public class Table8 implements Serializable {
         return Objects.hash(getId());
     }
 }
-

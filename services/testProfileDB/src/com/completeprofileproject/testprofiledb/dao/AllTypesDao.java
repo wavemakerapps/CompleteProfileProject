@@ -33,4 +33,3 @@ public class AllTypesDao extends WMGenericDaoImpl<AllTypes, Integer> {
         return this.template;
     }
 }
-

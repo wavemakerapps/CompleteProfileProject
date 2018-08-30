@@ -412,7 +412,11 @@
     "tableType" : "TABLE",
     "properties" : [ ],
     "relatedTables" : [ ],
-    "package" : "com.prefabwithallservcies.testprofiledb.AllTypes"
+    "package" : "com.prefabwithallservcies.testprofiledb.AllTypes",
+    "filterExpressions" : {
+      "condition" : "AND",
+      "rules" : [ ]
+    }
   },
   "Wavemakeronline2Invoke" : {
     "_id" : "wm-Wavemakeronline2Invoke-wm.ServiceVariable-1512997510386",
@@ -433,7 +437,7 @@
     "dataSet" : [ ],
     "isList" : true,
     "maxResults" : 20,
-    "startUpdate" : false,
+    "startUpdate" : true,
     "autoUpdate" : true,
     "inFlightBehavior" : "executeLast",
     "transformationRequired" : false,

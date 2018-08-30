@@ -385,6 +385,10 @@
     "tableType" : "TABLE",
     "properties" : [ ],
     "relatedTables" : [ ],
+    "filterExpressions" : {
+      "condition" : "AND",
+      "rules" : [ ]
+    },
     "package" : "com.completeprofileproject.sales.Sale"
   },
   "shortPValue" : {
@@ -569,6 +573,10 @@
     "tableType" : "TABLE",
     "properties" : [ ],
     "relatedTables" : [ ],
+    "filterExpressions" : {
+      "condition" : "AND",
+      "rules" : [ ]
+    },
     "package" : "com.completeprofileproject.testprofiledb.AllTypes"
   },
   "TestProfileDBExecuteTestproc" : {
@@ -750,6 +758,10 @@
     "tableType" : "TABLE",
     "properties" : [ ],
     "relatedTables" : [ ],
+    "filterExpressions" : {
+      "condition" : "AND",
+      "rules" : [ ]
+    },
     "package" : "com.completeprofileproject.testprofiledb.Sale"
   },
   "Websocket" : {

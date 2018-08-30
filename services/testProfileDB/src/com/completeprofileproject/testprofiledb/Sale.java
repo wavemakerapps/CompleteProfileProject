@@ -24,12 +24,12 @@ import javax.persistence.Table;
 public class Sale implements Serializable {
 
     private Integer id;
-    private Integer year;
-    private Integer quarter;
+    private Integer year = 2011;
+    private Integer quarter = 4;
     private Date date;
     private String client;
     private String accountManager;
-    private Double revenue;
+    private Double revenue = 0.00D;
     private String product;
 
     @Id
@@ -120,4 +120,3 @@ public class Sale implements Serializable {
         return Objects.hash(getId());
     }
 }
-

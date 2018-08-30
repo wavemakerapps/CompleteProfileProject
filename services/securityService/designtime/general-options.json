@@ -41,7 +41,8 @@
     "tokenValiditySeconds" : 1800
   },
   "authProviders" : [ "AD" ],
-  "xFrameOptions" : {
+  "frameOptions" : {
+    "enabled" : "true",
     "mode" : "SAMEORIGIN",
     "allowFromUrl" : null
   }

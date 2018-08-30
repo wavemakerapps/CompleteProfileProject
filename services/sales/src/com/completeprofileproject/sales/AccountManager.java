@@ -59,4 +59,3 @@ public class AccountManager implements Serializable {
         return Objects.hash(getId());
     }
 }
-

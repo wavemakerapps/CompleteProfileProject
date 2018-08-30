@@ -33,4 +33,3 @@ public class DepartmentDao extends WMGenericDaoImpl<Department, Integer> {
         return this.template;
     }
 }
-

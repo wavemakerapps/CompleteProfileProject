@@ -152,9 +152,7 @@ public class Department implements Serializable {
     @PostPersist
     public void onPostPersist() {
         if(employees != null) {
-            for(Employee employee : employees) {
-                employee.setDepartment(this);
-            }
+            employees.forEach(_employee -> _employee.setDepartment(this));
         }
     }
 
@@ -171,4 +169,3 @@ public class Department implements Serializable {
         return Objects.hash(getDeptId());
     }
 }
-

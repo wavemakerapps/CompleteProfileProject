@@ -132,4 +132,3 @@ public class Vacation implements Serializable {
         return Objects.hash(getId());
     }
 }
-

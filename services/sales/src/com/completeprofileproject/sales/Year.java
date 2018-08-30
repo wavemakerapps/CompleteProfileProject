@@ -59,4 +59,3 @@ public class Year implements Serializable {
         return Objects.hash(getId());
     }
 }
-

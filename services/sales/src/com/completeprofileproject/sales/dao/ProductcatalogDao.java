@@ -33,4 +33,3 @@ public class ProductcatalogDao extends WMGenericDaoImpl<Productcatalog, Integer>
         return this.template;
     }
 }
-

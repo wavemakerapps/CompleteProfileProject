@@ -120,4 +120,3 @@ public class ActionItem implements Serializable {
         return Objects.hash(getId());
     }
 }
-

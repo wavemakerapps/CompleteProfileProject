@@ -161,7 +161,7 @@
     border-bottom-color: @nav-tabs-border-color;
     background-color: @nav-tabs-bg;
     > li {
-      > a, .app-menu a {
+      > a {
         color: @nav-tabs-color;
         text-transform: uppercase;
         background-color: @nav-tabs-active-link-hover-bg;
@@ -196,7 +196,7 @@
         }
       }
       &.active {
-        > a, .app-menu a {
+        > a {
           border-color: transparent;
           color: @nav-tabs-color-hover;
           &:after {
@@ -212,6 +212,12 @@
             color: @nav-tabs-color-hover;
           }
         }
+      }
+      //Default styles for menu in nav
+      &.app-nav-item > .dropdown > a.dropdown-toggle {
+        padding: @nav-link-padding;
+        color: @nav-tabs-color;
+        text-transform: uppercase;
       }
     }
   }

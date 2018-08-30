@@ -33,4 +33,3 @@ public class ActionItemDao extends WMGenericDaoImpl<ActionItem, Integer> {
         return this.template;
     }
 }
-

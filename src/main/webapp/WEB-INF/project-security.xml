@@ -4,21 +4,12 @@
     <bean class="com.wavemaker.runtime.security.controller.SecurityController" id="securityController"/>
     <bean class="com.wavemaker.runtime.web.filter.SSLSecureFilter" id="sslSecureFilter"/>
     <bean class="com.wavemaker.runtime.security.xss.filter.WMXSSFilter" id="wmXSSFilter"/>
-    <bean class="com.wavemaker.runtime.security.filter.WMXFrameOptionsHeaderFilter" id="wmXFrameOptionsFilter">
-        <property name="xFrameOptionsMode" value="${general.xFrameOptions.mode}"/>
-        <property name="allowFromUrl" value="${general.xFrameOptions.allowFromUrl}"/>
-    </bean>
     <bean class="com.wavemaker.runtime.security.filter.WMXContentTypeOptionsFilter" id="wmXContentTypeOptionsFilter"/>
     <bean class="org.springframework.web.filter.CorsFilter" id="corsFilter">
         <constructor-arg ref="corsConfigurationSource"/>
     </bean>
     <bean class="org.springframework.web.cors.UrlBasedCorsConfigurationSource" id="corsConfigurationSource"/>
     <bean class="com.wavemaker.runtime.cors.CorsBeanPostProcessor" id="corsBeanPostProcessor"/>
-    <bean class="org.springframework.security.web.FilterChainProxy" id="wmCompositeSecurityFilter">
-        <constructor-arg>
-            <security:filter-chain pattern="/**" filters="sslSecureFilter, wmXSSFilter, wmXFrameOptionsFilter, wmXContentTypeOptionsFilter,corsFilter"/>
-        </constructor-arg>
-    </bean>
     <bean class="com.wavemaker.runtime.data.spring.WMPropertyPlaceholderConfigurer">
         <property name="locations">
             <list>
@@ -263,5 +254,18 @@
         <property name="groupRoleAttribute">
             <value>${providers.ad.groupRoleAttribute}</value>
         </property>
+    </bean>
+    <bean class="com.wavemaker.runtime.security.filter.WMFrameOptionsHeaderFilter" id="wmFrameOptionsFilter">
+        <property name="frameOptions" ref="frameOptions"/>
+    </bean>
+    <bean class="com.wavemaker.commons.model.security.FrameOptions" id="frameOptions">
+        <property name="enabled" value="${general.frameOptions.enabled}"/>
+        <property name="mode" value="${general.frameOptions.mode}"/>
+        <property name="allowFromUrl" value="${general.frameOptions.allowFromUrl}"/>
+    </bean>
+    <bean class="org.springframework.security.web.FilterChainProxy" id="wmCompositeSecurityFilter">
+        <constructor-arg>
+            <security:filter-chain pattern="/**" filters="sslSecureFilter, wmXSSFilter, wmFrameOptionsFilter, wmXContentTypeOptionsFilter,corsFilter"/>
+        </constructor-arg>
     </bean>
 </beans>

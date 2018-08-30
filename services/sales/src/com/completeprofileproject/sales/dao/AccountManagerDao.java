@@ -33,4 +33,3 @@ public class AccountManagerDao extends WMGenericDaoImpl<AccountManager, Integer>
         return this.template;
     }
 }
-

@@ -1,7 +1,7 @@
 {
   "wavemakeronline2_RestServiceVirtualController-invoke" : {
     "id" : "wavemakeronline2_RestServiceVirtualController-invoke",
-    "service" : "wavemakeronline2",
+    "service" : "wavemakeronline",
     "controller" : "RestServiceVirtualController",
     "operationType" : "array",
     "type" : "array",
@@ -20,7 +20,7 @@
         "contentType" : null
       } ],
       "definitions" : { },
-      "produces" : [ "application/json" ],
+      "produces" : null,
       "consumes" : [ "application/json" ],
       "proxySettings" : {
         "web" : true,

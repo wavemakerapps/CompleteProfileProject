@@ -27,6 +27,10 @@
       "widget" : "string",
       "show" : true,
       "disabled" : false
+    },
+    "restService" : {
+      "type" : "method",
+      "method" : "Wavemakeronline2Invoke"
     }
   }
 }

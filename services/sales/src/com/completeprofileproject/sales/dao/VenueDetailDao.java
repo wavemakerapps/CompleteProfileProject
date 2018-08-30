@@ -33,4 +33,3 @@ public class VenueDetailDao extends WMGenericDaoImpl<VenueDetail, Integer> {
         return this.template;
     }
 }
-

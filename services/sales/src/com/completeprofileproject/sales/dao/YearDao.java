@@ -33,4 +33,3 @@ public class YearDao extends WMGenericDaoImpl<Year, Integer> {
         return this.template;
     }
 }
-

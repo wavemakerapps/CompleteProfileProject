@@ -140,4 +140,3 @@ public class AllTypes implements Serializable {
         return Objects.hash(getId());
     }
 }
-

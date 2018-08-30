@@ -69,4 +69,3 @@ public class Productcatalog implements Serializable {
         return Objects.hash(getProductId());
     }
 }
-

@@ -23,6 +23,28 @@
     "operation" : "gotoPage",
     "pageName" : "Main"
   },
+  "goToPage_test122213" : {
+    "_id" : "wm-goToPage_test122213-wm.NavigationVariable-1521010497679",
+    "name" : "goToPage_test122213",
+    "owner" : "App",
+    "category" : "wm.NavigationVariable",
+    "dataBinding" : [ ],
+    "operation" : "gotoPage",
+    "pageName" : "test122213",
+    "dataSet" : [ ],
+    "pageTransitions" : "none"
+  },
+  "goToPage_test434343" : {
+    "_id" : "wm-goToPage_test434343-wm.NavigationVariable-1521010605602",
+    "name" : "goToPage_test434343",
+    "owner" : "App",
+    "category" : "wm.NavigationVariable",
+    "dataBinding" : [ ],
+    "operation" : "gotoPage",
+    "pageName" : "test434343",
+    "dataSet" : [ ],
+    "pageTransitions" : "none"
+  },
   "loggedInUser" : {
     "_id" : "wm-loggedInUser-wm.Variable-1513590641260",
     "name" : "loggedInUser",
