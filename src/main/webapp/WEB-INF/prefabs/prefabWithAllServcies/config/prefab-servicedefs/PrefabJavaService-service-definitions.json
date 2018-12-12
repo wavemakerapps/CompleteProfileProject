@@ -1,0 +1,239 @@
+{
+  "PrefabJavaController_getLongPValue" : {
+    "id" : "PrefabJavaController_getLongPValue",
+    "service" : "PrefabJavaService",
+    "controller" : "PrefabJavaController",
+    "operationType" : "integer",
+    "type" : "integer",
+    "wmServiceOperationInfo" : {
+      "name" : "getLongPValue",
+      "methodType" : "get",
+      "relativePath" : "/prefabJava/longPValue",
+      "directPath" : "/prefabJava/longPValue",
+      "httpMethod" : "get",
+      "parameters" : [ ],
+      "definitions" : { },
+      "produces" : null,
+      "consumes" : null,
+      "proxySettings" : {
+        "web" : true,
+        "mobile" : true
+      },
+      "securityDefinitions" : [ ]
+    }
+  },
+  "PrefabJavaController_getIntPValue" : {
+    "id" : "PrefabJavaController_getIntPValue",
+    "service" : "PrefabJavaService",
+    "controller" : "PrefabJavaController",
+    "operationType" : "integer",
+    "type" : "integer",
+    "wmServiceOperationInfo" : {
+      "name" : "getIntPValue",
+      "methodType" : "get",
+      "relativePath" : "/prefabJava/intPValue",
+      "directPath" : "/prefabJava/intPValue",
+      "httpMethod" : "get",
+      "parameters" : [ ],
+      "definitions" : { },
+      "produces" : null,
+      "consumes" : null,
+      "proxySettings" : {
+        "web" : true,
+        "mobile" : true
+      },
+      "securityDefinitions" : [ ]
+    }
+  },
+  "PrefabJavaController_sampleJavaOperation" : {
+    "id" : "PrefabJavaController_sampleJavaOperation",
+    "service" : "PrefabJavaService",
+    "controller" : "PrefabJavaController",
+    "operationType" : "string",
+    "type" : "string",
+    "wmServiceOperationInfo" : {
+      "name" : "sampleJavaOperation",
+      "methodType" : "get",
+      "relativePath" : "/prefabJava/sampleJavaOperation",
+      "directPath" : "/prefabJava/sampleJavaOperation",
+      "httpMethod" : "get",
+      "parameters" : [ {
+        "name" : "name",
+        "parameterType" : "query",
+        "required" : false,
+        "type" : "java.lang.String",
+        "readOnly" : false,
+        "contentType" : null
+      } ],
+      "definitions" : { },
+      "produces" : [ "application/json" ],
+      "consumes" : null,
+      "proxySettings" : {
+        "web" : true,
+        "mobile" : true
+      },
+      "securityDefinitions" : [ ]
+    }
+  },
+  "PrefabJavaController_getCharPValue" : {
+    "id" : "PrefabJavaController_getCharPValue",
+    "service" : "PrefabJavaService",
+    "controller" : "PrefabJavaController",
+    "operationType" : "string",
+    "type" : "string",
+    "wmServiceOperationInfo" : {
+      "name" : "getCharPValue",
+      "methodType" : "get",
+      "relativePath" : "/prefabJava/charPValue",
+      "directPath" : "/prefabJava/charPValue",
+      "httpMethod" : "get",
+      "parameters" : [ ],
+      "definitions" : { },
+      "produces" : null,
+      "consumes" : null,
+      "proxySettings" : {
+        "web" : true,
+        "mobile" : true
+      },
+      "securityDefinitions" : [ ]
+    }
+  },
+  "PrefabJavaController_getFloatPValue" : {
+    "id" : "PrefabJavaController_getFloatPValue",
+    "service" : "PrefabJavaService",
+    "controller" : "PrefabJavaController",
+    "operationType" : "number",
+    "type" : "number",
+    "wmServiceOperationInfo" : {
+      "name" : "getFloatPValue",
+      "methodType" : "get",
+      "relativePath" : "/prefabJava/floatPValue",
+      "directPath" : "/prefabJava/floatPValue",
+      "httpMethod" : "get",
+      "parameters" : [ ],
+      "definitions" : { },
+      "produces" : null,
+      "consumes" : null,
+      "proxySettings" : {
+        "web" : true,
+        "mobile" : true
+      },
+      "securityDefinitions" : [ ]
+    }
+  },
+  "PrefabJavaController_getshortPValue" : {
+    "id" : "PrefabJavaController_getshortPValue",
+    "service" : "PrefabJavaService",
+    "controller" : "PrefabJavaController",
+    "operationType" : "integer",
+    "type" : "integer",
+    "wmServiceOperationInfo" : {
+      "name" : "getshortPValue",
+      "methodType" : "get",
+      "relativePath" : "/prefabJava/shortPValue",
+      "directPath" : "/prefabJava/shortPValue",
+      "httpMethod" : "get",
+      "parameters" : [ ],
+      "definitions" : { },
+      "produces" : null,
+      "consumes" : null,
+      "proxySettings" : {
+        "web" : true,
+        "mobile" : true
+      },
+      "securityDefinitions" : [ ]
+    }
+  },
+  "PrefabJavaController_getDoublePValue" : {
+    "id" : "PrefabJavaController_getDoublePValue",
+    "service" : "PrefabJavaService",
+    "controller" : "PrefabJavaController",
+    "operationType" : "number",
+    "type" : "number",
+    "wmServiceOperationInfo" : {
+      "name" : "getDoublePValue",
+      "methodType" : "get",
+      "relativePath" : "/prefabJava/doublePValue",
+      "directPath" : "/prefabJava/doublePValue",
+      "httpMethod" : "get",
+      "parameters" : [ ],
+      "definitions" : { },
+      "produces" : null,
+      "consumes" : null,
+      "proxySettings" : {
+        "web" : true,
+        "mobile" : true
+      },
+      "securityDefinitions" : [ ]
+    }
+  },
+  "PrefabJavaController_getBooleanPValue" : {
+    "id" : "PrefabJavaController_getBooleanPValue",
+    "service" : "PrefabJavaService",
+    "controller" : "PrefabJavaController",
+    "operationType" : "boolean",
+    "type" : "boolean",
+    "wmServiceOperationInfo" : {
+      "name" : "getBooleanPValue",
+      "methodType" : "get",
+      "relativePath" : "/prefabJava/booleanPValue",
+      "directPath" : "/prefabJava/booleanPValue",
+      "httpMethod" : "get",
+      "parameters" : [ ],
+      "definitions" : { },
+      "produces" : null,
+      "consumes" : null,
+      "proxySettings" : {
+        "web" : true,
+        "mobile" : true
+      },
+      "securityDefinitions" : [ ]
+    }
+  },
+  "PrefabJavaController_getBytePValue" : {
+    "id" : "PrefabJavaController_getBytePValue",
+    "service" : "PrefabJavaService",
+    "controller" : "PrefabJavaController",
+    "operationType" : "string",
+    "type" : "string",
+    "wmServiceOperationInfo" : {
+      "name" : "getBytePValue",
+      "methodType" : "get",
+      "relativePath" : "/prefabJava/bytePValue",
+      "directPath" : "/prefabJava/bytePValue",
+      "httpMethod" : "get",
+      "parameters" : [ ],
+      "definitions" : { },
+      "produces" : null,
+      "consumes" : null,
+      "proxySettings" : {
+        "web" : true,
+        "mobile" : true
+      },
+      "securityDefinitions" : [ ]
+    }
+  },
+  "PrefabJavaController_getDatePValue" : {
+    "id" : "PrefabJavaController_getDatePValue",
+    "service" : "PrefabJavaService",
+    "controller" : "PrefabJavaController",
+    "operationType" : "string",
+    "type" : "string",
+    "wmServiceOperationInfo" : {
+      "name" : "getDatePValue",
+      "methodType" : "get",
+      "relativePath" : "/prefabJava/datePValue",
+      "directPath" : "/prefabJava/datePValue",
+      "httpMethod" : "get",
+      "parameters" : [ ],
+      "definitions" : { },
+      "produces" : null,
+      "consumes" : null,
+      "proxySettings" : {
+        "web" : true,
+        "mobile" : true
+      },
+      "securityDefinitions" : [ ]
+    }
+  }
+}

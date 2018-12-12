@@ -1,0 +1,38 @@
+{
+  "username" : "sa",
+  "password" : "7b6a43524a353f3a664c733d4e537670477c612a43",
+  "url" : "jdbc:sqlserver://52.12.227.219:1433;databaseName=testProfileDB",
+  "driverClass" : "com.microsoft.sqlserver.jdbc.SQLServerDriver",
+  "dialect" : "com.wavemaker.runtime.data.dialect.WMSQLServerDialect",
+  "serviceId" : "testProfileDB",
+  "packageName" : "com.completeprofileproject.testprofiledb",
+  "dbType" : "SQLServer",
+  "host" : "52.12.227.219",
+  "dbName" : "testProfileDB",
+  "port" : "1433",
+  "schemaName" : "devschema",
+  "tableFilter" : [ {
+    "table" : "All Types",
+    "schema" : "devschema"
+  }, {
+    "table" : "sale",
+    "schema" : "devschema"
+  } ],
+  "schemaFilter" : [ "devschema" ],
+  "impersonateUser" : false,
+  "activeDirectoryDomain" : null,
+  "hbm2ddl" : "none",
+  "maxPageSize" : 100,
+  "minPoolSize" : 2,
+  "maxPoolSize" : 4,
+  "transactionTimeout" : 30,
+  "dataSourceType" : "WM_MANAGED_DATASOURCE",
+  "jndiName" : "",
+  "reloadInfo" : {
+    "reload" : true,
+    "reason" : "MIGRATION_FAILED",
+    "message" : "Source code re-generation needed due to framework level changes.",
+    "reImport" : true
+  },
+  "readOnly" : false
+}

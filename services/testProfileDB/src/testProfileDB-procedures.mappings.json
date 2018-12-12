@@ -1,0 +1,6 @@
+{
+  "testproc" : {
+    "procedureString" : "EXEC devschema.testProcedure1",
+    "parameters" : [ ]
+  }
+}

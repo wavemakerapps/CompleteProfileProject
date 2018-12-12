@@ -1,0 +1,12 @@
+{
+  "displayName" : "testPrefab4324",
+  "group" : "",
+  "iconUrl" : "/resources/images/imagelists/prefab-icon.png",
+  "resources" : {
+    "styles" : [ "/pages/Main/Main.css" ],
+    "scripts" : [ ]
+  },
+  "properties" : { },
+  "methods" : { },
+  "events" : { }
+}

@@ -1,0 +1,113 @@
+{
+  "description" : null,
+  "methods" : {
+    "getBooleanPValue" : [ {
+      "url" : {
+        "value" : "/booleanPValue",
+        "modified" : false
+      },
+      "method" : {
+        "value" : "GET",
+        "modified" : false
+      },
+      "accessSpecifier" : "APP_ONLY",
+      "parameters" : { }
+    } ],
+    "getBytePValue" : [ {
+      "url" : {
+        "value" : "/bytePValue",
+        "modified" : false
+      },
+      "method" : {
+        "value" : "GET",
+        "modified" : false
+      },
+      "accessSpecifier" : "APP_ONLY",
+      "parameters" : { }
+    } ],
+    "getCharPValue" : [ {
+      "url" : {
+        "value" : "/charPValue",
+        "modified" : false
+      },
+      "method" : {
+        "value" : "GET",
+        "modified" : false
+      },
+      "accessSpecifier" : "APP_ONLY",
+      "parameters" : { }
+    } ],
+    "getDatePValue" : [ {
+      "url" : {
+        "value" : "/datePValue",
+        "modified" : false
+      },
+      "method" : {
+        "value" : "GET",
+        "modified" : false
+      },
+      "accessSpecifier" : "APP_ONLY",
+      "parameters" : { }
+    } ],
+    "getDoublePValue" : [ {
+      "url" : {
+        "value" : "/doublePValue",
+        "modified" : false
+      },
+      "method" : {
+        "value" : "GET",
+        "modified" : false
+      },
+      "accessSpecifier" : "APP_ONLY",
+      "parameters" : { }
+    } ],
+    "getFloatPValue" : [ {
+      "url" : {
+        "value" : "/floatPValue",
+        "modified" : false
+      },
+      "method" : {
+        "value" : "GET",
+        "modified" : false
+      },
+      "accessSpecifier" : "APP_ONLY",
+      "parameters" : { }
+    } ],
+    "getIntPValue" : [ {
+      "url" : {
+        "value" : "/intPValue",
+        "modified" : false
+      },
+      "method" : {
+        "value" : "GET",
+        "modified" : false
+      },
+      "accessSpecifier" : "APP_ONLY",
+      "parameters" : { }
+    } ],
+    "getLongPValue" : [ {
+      "url" : {
+        "value" : "/longPValue",
+        "modified" : false
+      },
+      "method" : {
+        "value" : "GET",
+        "modified" : false
+      },
+      "accessSpecifier" : "APP_ONLY",
+      "parameters" : { }
+    } ],
+    "getshortPValue" : [ {
+      "url" : {
+        "value" : "/shortPValue",
+        "modified" : false
+      },
+      "method" : {
+        "value" : "GET",
+        "modified" : false
+      },
+      "accessSpecifier" : "APP_ONLY",
+      "parameters" : { }
+    } ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "endpointAddress" : "wss://websocket-demos.wavemakeronline.com:443/websocket/randomnumber",
+  "method" : "GET",
+  "contentType" : "",
+  "sampleRequestBody" : "",
+  "authType" : "NONE",
+  "headers" : { },
+  "queryParams" : { },
+  "sampleWebSocketResponse" : {
+    "responseBody" : "{\"time\":1513589130909,\"value\":42}",
+    "convertedResponse" : null,
+    "statusCode" : 0,
+    "contentType" : ""
+  }
+}

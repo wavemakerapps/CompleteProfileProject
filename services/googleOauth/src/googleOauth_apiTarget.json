@@ -1,0 +1,82 @@
+{
+  "basePath" : "${googleOauth.basepath}",
+  "paths" : {
+    "/v1/userinfo" : {
+      "x-WM-BASE_PATH" : "/v1/userinfo",
+      "x-WM-TAG" : "RestServiceVirtualController",
+      "x-WM-RELATIVE_PATH" : "",
+      "get" : {
+        "x-WM-METHOD_NAME" : "invoke",
+        "security" : [ {
+          "oauth2" : [ ]
+        } ],
+        "x-WM-ACCESS_SPECIFIER" : "APP_ONLY",
+        "produces" : [ "application/json" ],
+        "operationId" : "googleOauth_RestServiceVirtualController-invoke",
+        "responses" : {
+          "200" : {
+            "schema" : {
+              "$ref" : "#/definitions/RootResponse"
+            },
+            "description" : "Success"
+          }
+        },
+        "tags" : [ "RestServiceVirtualController" ],
+        "consumes" : [ "application/json" ]
+      },
+      "x-WM-COMPLETE_PATH" : "${googleOauth.scheme}://${googleOauth.host}${googleOauth.basepath}/v1/userinfo"
+    }
+  },
+  "host" : "${googleOauth.host}",
+  "schemes" : [ "${googleOauth.scheme}" ],
+  "securityDefinitions" : {
+    "oauth2" : {
+      "accessTokenParamName" : "Bearer",
+      "tokenUrl" : "https://www.googleapis.com/oauth2/v3/token",
+      "authorizationUrl" : "https://accounts.google.com/o/oauth2/auth",
+      "sendAccessTokenAs" : "HEADER",
+      "type" : "oauth2",
+      "x-WM-PROVIDER_ID" : "google"
+    }
+  },
+  "definitions" : {
+    "RootResponse" : {
+      "x-WM-FULLY_QUALIFIED_NAME" : "googleOauth.RootResponse",
+      "x-WM-TAGS" : [ "RestServiceVirtualController" ],
+      "required" : [ "family_name", "given_name", "id", "locale", "name", "picture" ],
+      "properties" : {
+        "name" : {
+          "type" : "string"
+        },
+        "id" : {
+          "type" : "string"
+        },
+        "given_name" : {
+          "type" : "string"
+        },
+        "locale" : {
+          "type" : "string"
+        },
+        "family_name" : {
+          "type" : "string"
+        },
+        "picture" : {
+          "type" : "string"
+        }
+      }
+    }
+  },
+  "swagger" : "2.0",
+  "info" : {
+    "x-WM-USE_PROXY_FOR_WEB" : true,
+    "x-WM-USE_PROXY_FOR_MOBILE" : true,
+    "x-WM-API_ID" : "02ae2e34-e246-4642-aad7-9dbd6428ae84",
+    "x-WM-SERVICE_ID" : "googleapis",
+    "version" : "2.0",
+    "x-WM-SERVICE_TYPE" : "RestService"
+  },
+  "tags" : [ {
+    "name" : "RestServiceVirtualController",
+    "description" : "Rest service swagger documentation"
+  } ]
+}
