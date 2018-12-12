@@ -25,3 +25,11 @@ Prefab.onReady = function () {
     // this method will be triggered post initialization of the prefab.
 };
 
+
+
+/*
+ * Wavemakeronline2Invoke description
+ */
+Prefab.restService = function () { 
+
+};

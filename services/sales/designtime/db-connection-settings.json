@@ -53,9 +53,10 @@
   "dataSourceType" : "WM_MANAGED_DATASOURCE",
   "jndiName" : "",
   "reloadInfo" : {
-    "reload" : true,
-    "reason" : "MIGRATION_FAILED",
-    "message" : "Source code re-generation needed due to framework level changes."
+    "reload" : false,
+    "reason" : null,
+    "message" : null,
+    "reImport" : false
   },
   "readOnly" : true
 }

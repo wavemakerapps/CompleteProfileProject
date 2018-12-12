@@ -7,7 +7,7 @@
   "headers" : { },
   "queryParams" : { },
   "sampleWebSocketResponse" : {
-    "responseBody" : "{\"time\":1513589130909,\"value\":42}",
+    "responseBody" : "{\"time\":1544604779275,\"value\":51}",
     "convertedResponse" : null,
     "statusCode" : 0,
     "contentType" : ""

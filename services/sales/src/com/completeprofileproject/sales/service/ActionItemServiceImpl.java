@@ -19,6 +19,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
 
+import com.wavemaker.commons.MessageResource;
 import com.wavemaker.runtime.data.dao.WMGenericDao;
 import com.wavemaker.runtime.data.exception.EntityNotFoundException;
 import com.wavemaker.runtime.data.export.DataExportOptions;
@@ -106,7 +107,7 @@ public class ActionItemServiceImpl implements ActionItemService {
         ActionItem deleted = this.wmGenericDao.findById(actionitemId);
         if (deleted == null) {
             LOGGER.debug("No ActionItem found with id: {}", actionitemId);
-            throw new EntityNotFoundException(String.valueOf(actionitemId));
+            throw new EntityNotFoundException(MessageResource.create("com.wavemaker.runtime.entity.not.found"), ActionItem.class.getSimpleName(), actionitemId);
         }
         this.wmGenericDao.delete(deleted);
         return deleted;

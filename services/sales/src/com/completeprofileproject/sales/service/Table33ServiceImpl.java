@@ -19,6 +19,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
 
+import com.wavemaker.commons.MessageResource;
 import com.wavemaker.runtime.data.dao.WMGenericDao;
 import com.wavemaker.runtime.data.exception.EntityNotFoundException;
 import com.wavemaker.runtime.data.export.DataExportOptions;
@@ -106,7 +107,7 @@ public class Table33ServiceImpl implements Table33Service {
         Table33 deleted = this.wmGenericDao.findById(table33Id);
         if (deleted == null) {
             LOGGER.debug("No Table33 found with id: {}", table33Id);
-            throw new EntityNotFoundException(String.valueOf(table33Id));
+            throw new EntityNotFoundException(MessageResource.create("com.wavemaker.runtime.entity.not.found"), Table33.class.getSimpleName(), table33Id);
         }
         this.wmGenericDao.delete(deleted);
         return deleted;

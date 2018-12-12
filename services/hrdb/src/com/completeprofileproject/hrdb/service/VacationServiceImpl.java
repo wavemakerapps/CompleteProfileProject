@@ -19,6 +19,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
 
+import com.wavemaker.commons.MessageResource;
 import com.wavemaker.runtime.data.dao.WMGenericDao;
 import com.wavemaker.runtime.data.exception.EntityNotFoundException;
 import com.wavemaker.runtime.data.export.DataExportOptions;
@@ -106,7 +107,7 @@ public class VacationServiceImpl implements VacationService {
         Vacation deleted = this.wmGenericDao.findById(vacationId);
         if (deleted == null) {
             LOGGER.debug("No Vacation found with id: {}", vacationId);
-            throw new EntityNotFoundException(String.valueOf(vacationId));
+            throw new EntityNotFoundException(MessageResource.create("com.wavemaker.runtime.entity.not.found"), Vacation.class.getSimpleName(), vacationId);
         }
         this.wmGenericDao.delete(deleted);
         return deleted;

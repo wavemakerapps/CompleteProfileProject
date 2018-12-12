@@ -554,7 +554,49 @@
       "sqlType" : "string",
       "unique" : false
     } ],
-    "constraints" : [ ],
+    "constraints" : [ {
+      "columns" : [ "year" ],
+      "composite" : false,
+      "name" : "DF__sale__year__36B12243",
+      "schemaName" : "devschema",
+      "type" : "DEFAULT",
+      "virtual" : false
+    }, {
+      "columns" : [ "quarter" ],
+      "composite" : false,
+      "name" : "DF__sale__quarter__37A5467C",
+      "schemaName" : "devschema",
+      "type" : "DEFAULT",
+      "virtual" : false
+    }, {
+      "columns" : [ "client" ],
+      "composite" : false,
+      "name" : "DF__sale__client__38996AB5",
+      "schemaName" : "devschema",
+      "type" : "DEFAULT",
+      "virtual" : false
+    }, {
+      "columns" : [ "accountManager" ],
+      "composite" : false,
+      "name" : "DF__sale__accountMan__398D8EEE",
+      "schemaName" : "devschema",
+      "type" : "DEFAULT",
+      "virtual" : false
+    }, {
+      "columns" : [ "revenue" ],
+      "composite" : false,
+      "name" : "DF__sale__revenue__3A81B327",
+      "schemaName" : "devschema",
+      "type" : "DEFAULT",
+      "virtual" : false
+    }, {
+      "columns" : [ "product" ],
+      "composite" : false,
+      "name" : "DF__sale__product__3B75D760",
+      "schemaName" : "devschema",
+      "type" : "DEFAULT",
+      "virtual" : false
+    } ],
     "entityName" : "Sale",
     "filter" : null,
     "fullyQualifiedName" : "com.completeprofileproject.testprofiledb.Sale",

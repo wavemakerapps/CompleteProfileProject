@@ -22,6 +22,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
 
+import com.wavemaker.commons.MessageResource;
 import com.wavemaker.runtime.data.dao.WMGenericDao;
 import com.wavemaker.runtime.data.exception.EntityNotFoundException;
 import com.wavemaker.runtime.data.export.DataExportOptions;
@@ -128,7 +129,7 @@ public class DepartmentServiceImpl implements DepartmentService {
         Department deleted = this.wmGenericDao.findById(departmentId);
         if (deleted == null) {
             LOGGER.debug("No Department found with id: {}", departmentId);
-            throw new EntityNotFoundException(String.valueOf(departmentId));
+            throw new EntityNotFoundException(MessageResource.create("com.wavemaker.runtime.entity.not.found"), Department.class.getSimpleName(), departmentId);
         }
         this.wmGenericDao.delete(deleted);
         return deleted;

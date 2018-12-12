@@ -19,6 +19,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
 
+import com.wavemaker.commons.MessageResource;
 import com.wavemaker.runtime.data.dao.WMGenericDao;
 import com.wavemaker.runtime.data.exception.EntityNotFoundException;
 import com.wavemaker.runtime.data.export.DataExportOptions;
@@ -106,7 +107,7 @@ public class AccountManagerServiceImpl implements AccountManagerService {
         AccountManager deleted = this.wmGenericDao.findById(accountmanagerId);
         if (deleted == null) {
             LOGGER.debug("No AccountManager found with id: {}", accountmanagerId);
-            throw new EntityNotFoundException(String.valueOf(accountmanagerId));
+            throw new EntityNotFoundException(MessageResource.create("com.wavemaker.runtime.entity.not.found"), AccountManager.class.getSimpleName(), accountmanagerId);
         }
         this.wmGenericDao.delete(deleted);
         return deleted;

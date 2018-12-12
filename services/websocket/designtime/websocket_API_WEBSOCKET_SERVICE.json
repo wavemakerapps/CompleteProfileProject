@@ -4,7 +4,7 @@
     "version" : "2.0",
     "x-WM-USE_PROXY_FOR_WEB" : false,
     "x-WM-USE_PROXY_FOR_MOBILE" : true,
-    "x-WM-API_ID" : "77d48e73-3bdd-4ca1-92f6-a3f91ebb078e",
+    "x-WM-API_ID" : "485fe6cf-a683-4003-854f-f66fa3f206ff",
     "x-WM-SERVICE_ID" : "wavemakeronline",
     "x-WM-SERVICE_TYPE" : "WebSocketService"
   },

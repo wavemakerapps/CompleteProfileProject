@@ -1,38 +1,51 @@
 {
-  "displayName" : "Googlemaps",
+  "displayName" : "googlemaps",
   "group" : "location",
   "iconUrl" : "/resources/images/imagelists/prefab-icon.png",
   "resources" : {
     "styles" : [ "/pages/Main/Main.css" ],
-    "scripts" : [ "https://maps.googleapis.com/maps/api/js?sensor=false&libraries=places,visualization,drawing,geometry" ],
-    "modules" : [ {
-      "name" : "ngMap",
-      "files" : [ "/resources/js/ng-map.min.js" ]
-    } ]
+    "scripts" : [ ],
+    "modules" : [ ]
   },
   "properties" : {
+    "apikey" : {
+      "type" : "string",
+      "displayName" : "API Key",
+      "description" : "This property allows you to set the api key for the google maps.",
+      "bindable" : "",
+      "isList" : false,
+      "value" : "",
+      "widget" : "string",
+      "show" : true,
+      "disabled" : false
+    },
     "maptype" : {
-      "type" : "list",
+      "type" : "string",
       "displayName" : "Map Type",
       "description" : "This property allows you to set the map type.",
+      "bindable" : "",
+      "isList" : true,
       "value" : "Markers",
       "options" : [ "Markers", "Route", "Heatmap" ],
+      "widget" : "list",
       "show" : true,
-      "disabled" : false,
-      "bindable" : ""
+      "disabled" : false
     },
     "viewtype" : {
-      "type" : "list",
+      "type" : "string",
       "displayName" : "View Type",
       "description" : "This property allows you to set the view type of the map.",
-      "value" : "TERRAIN",
-      "options" : [ "TERRAIN", "SATELLITE", "ROADMAP", "HYBRID" ],
+      "bindable" : "",
+      "isList" : true,
+      "value" : "Roadmap",
+      "options" : [ "Roadmap", "Satellite", "Hybrid", "Terrain" ],
+      "widget" : "list",
       "show" : true,
-      "disabled" : false,
-      "bindable" : ""
+      "disabled" : false
     },
     "locations" : {
       "type" : "array,object",
+      "displayName" : "Locations",
       "description" : "Set this property to a variable to populate the list of values to display.",
       "bindable" : "in-bound",
       "widget" : "string",
@@ -41,47 +54,100 @@
       "value" : ""
     },
     "markertype" : {
-      "type" : "list",
+      "type" : "string",
       "displayName" : "Location Type",
       "description" : "Set this property to change the format of the location being plotted.",
+      "bindable" : "",
+      "isList" : true,
       "value" : "LatLng",
       "options" : [ "Address", "LatLng" ],
+      "widget" : "list",
       "show" : false,
-      "disabled" : false,
-      "bindable" : ""
+      "disabled" : false
     },
     "address" : {
       "type" : "string",
-      "options" : [ ],
+      "displayName" : "Address",
+      "description" : "This property can be used to set the position/marker on the map.",
+      "bindable" : "",
+      "isList" : true,
       "widget" : "list-picker",
       "show" : false,
       "disabled" : false,
-      "description" : "",
-      "bindable" : "",
       "value" : ""
     },
     "lat" : {
-      "type" : "list",
+      "type" : "string",
       "displayName" : "Marker Latitude",
       "description" : "This property can be used to set the Latitude of the location.",
+      "bindable" : "",
+      "isList" : true,
+      "widget" : "list",
       "show" : false,
       "disabled" : false,
-      "bindable" : "",
       "value" : ""
     },
     "lng" : {
-      "type" : "list",
+      "type" : "string",
       "displayName" : "Marker Longitude",
       "description" : "This property can be used to set the Longitude of the location.",
+      "bindable" : "",
+      "isList" : true,
+      "widget" : "list",
       "show" : false,
       "disabled" : false,
+      "value" : ""
+    },
+    "radius" : {
+      "type" : "string",
+      "displayName" : "Perimeter Radius",
+      "description" : "This property is used to set the radius of the boundary around the marker.",
       "bindable" : "",
+      "isList" : true,
+      "widget" : "list",
+      "show" : false,
+      "disabled" : false,
+      "value" : ""
+    },
+    "shade" : {
+      "type" : "string",
+      "displayName" : "Perimeter Color",
+      "description" : "This property is used to set a circle shaped boundary around the marker.",
+      "bindable" : "",
+      "isList" : true,
+      "widget" : "list",
+      "show" : false,
+      "disabled" : false,
+      "value" : ""
+    },
+    "info" : {
+      "type" : "string",
+      "displayName" : "Marker Info",
+      "description" : "This property is used to set any information that needs to be displayed when the location is clicked.",
+      "bindable" : "",
+      "isList" : true,
+      "widget" : "list",
+      "show" : false,
+      "disabled" : false,
+      "value" : ""
+    },
+    "icon" : {
+      "type" : "string",
+      "displayName" : "Marker Icon",
+      "description" : "This property is used to set the icon to be displayed on the location.",
+      "bindable" : "",
+      "isList" : true,
+      "widget" : "list",
+      "show" : false,
+      "disabled" : false,
       "value" : ""
     },
     "gradient" : {
-      "type" : "array",
+      "type" : "string",
+      "displayName" : "Gradient",
       "description" : "Set this property to a variable to set the color of gradient displayed for Heatmap.",
       "bindable" : "in-bound",
+      "isList" : true,
       "widget" : "string",
       "show" : false,
       "disabled" : false,
@@ -91,76 +157,78 @@
       "type" : "number",
       "displayName" : "Pixel Density",
       "description" : "This property can be used to set the size of the marker.",
+      "bindable" : "",
       "value" : 10,
+      "widget" : "string",
       "show" : false,
-      "disabled" : false,
-      "bindable" : ""
+      "disabled" : false
     },
     "opacity" : {
       "type" : "number",
+      "displayName" : "Opacity",
       "description" : "This property can be used to set the appearance of the marker.",
+      "bindable" : "",
       "value" : 0.8,
+      "widget" : "string",
       "show" : false,
-      "disabled" : false,
-      "bindable" : ""
-    },
-    "info" : {
-      "type" : "list",
-      "displayName" : "Marker Info",
-      "description" : "This property is used to set any information that needs to be displayed when the location is clicked.",
-      "show" : false,
-      "disabled" : false,
-      "bindable" : "",
-      "value" : ""
-    },
-    "icon" : {
-      "type" : "list",
-      "displayName" : "Marker Icon",
-      "description" : "This property is used to set the icon to be displayed on the location.",
-      "show" : false,
-      "disabled" : false,
-      "bindable" : "",
-      "value" : ""
-    },
-    "shade" : {
-      "type" : "list",
-      "displayName" : "Perimeter Color",
-      "description" : "This property is used to set a circle shaped boundary around the marker.",
-      "show" : false,
-      "disabled" : false,
-      "bindable" : "",
-      "value" : ""
-    },
-    "radius" : {
-      "type" : "list",
-      "displayName" : "Perimeter Radius",
-      "description" : "This property is used to set the radius of the boundary around the marker.",
-      "show" : false,
-      "disabled" : false,
-      "bindable" : "",
-      "value" : ""
+      "disabled" : false
     },
     "origin" : {
       "type" : "string",
+      "displayName" : "Origin",
       "description" : "This property is used to set the start point of the route to be displayed.",
       "bindable" : "in-out-bound",
+      "widget" : "string",
       "show" : false,
       "disabled" : false,
       "value" : ""
     },
     "destination" : {
       "type" : "string",
+      "displayName" : "Destination",
       "description" : "This property is used to set the end point of the route to be displayed.",
       "bindable" : "in-out-bound",
+      "widget" : "string",
       "show" : false,
       "disabled" : false,
       "value" : ""
     },
+    "trafficlayer" : {
+      "type" : "boolean",
+      "displayName" : "Traffic Layer",
+      "description" : "This property is used to enable real-time traffic information (where supported) to your maps.",
+      "bindable" : "",
+      "value" : false,
+      "show" : false,
+      "disabled" : false
+    },
+    "transitlayer" : {
+      "type" : "boolean",
+      "displayName" : "Transit Layer",
+      "description" : "This property is used to enable real-time local transit information (where supported) to your maps.",
+      "bindable" : "",
+      "value" : false,
+      "show" : false,
+      "disabled" : false
+    },
+    "travelmode" : {
+      "type" : "string",
+      "displayName" : "Travel Mode",
+      "description" : "This property is used to set the mode of travel used for plotting the route",
+      "isList" : true,
+      "value" : "Driving",
+      "options" : [ "Walking", "Driving", "Transit", "Bicycling" ],
+      "widget" : "list",
+      "show" : false,
+      "disabled" : false,
+      "bindable" : ""
+    },
     "waypoints" : {
-      "type" : "array,object",
+      "type" : "object,array",
       "displayName" : "Way Points",
-      "description" : "This property is used to the mark the locations in between the route",
+      "description" : "This property is used to the mark the locations in between the route.",
       "bindable" : "in-bound",
+      "isList" : false,
       "widget" : "string",
       "show" : false,
       "disabled" : false,
@@ -168,65 +236,46 @@
     },
     "stopover" : {
       "type" : "boolean",
-      "description" : "This property is used to enable markers on the waypoints in the route",
+      "displayName" : "Stop Over",
+      "description" : "This property is used to enable markers on the way points in the route.",
+      "bindable" : "",
       "value" : false,
       "show" : false,
-      "disabled" : false,
-      "bindable" : ""
-    },
-    "travelmode" : {
-      "type" : "list",
-      "displayName" : "Travel Mode",
-      "description" : "This property is used to set the mode of travel used for plotting the route",
-      "value" : "Driving",
-      "options" : [ "Walking", "Driving", "Transit", "Bicycling" ],
-      "show" : false,
-      "disabled" : false,
-      "bindable" : ""
+      "disabled" : false
     },
     "height" : {
       "type" : "string",
+      "displayName" : "Height",
+      "description" : "Height",
+      "bindable" : "",
+      "isList" : false,
       "value" : "400px",
+      "widget" : "string",
       "show" : true,
-      "disabled" : false,
-      "description" : "",
-      "bindable" : ""
+      "disabled" : false
     },
     "zoom" : {
-      "type" : "list",
+      "type" : "number",
+      "displayName" : "Zoom",
       "description" : "This property is used to set the zoom level of the map",
-      "value" : 5,
-      "options" : [ ],
+      "isList" : true,
+      "value" : "5",
+      "options" : [ "Auto", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21" ],
+      "widget" : "list",
       "show" : true,
-      "disabled" : false,
-      "bindable" : ""
-    },
-    "trafficlayer" : {
-      "type" : "boolean",
-      "displayName" : "Traffic Layer",
-      "description" : "This property is used to enable real-time traffic information (where supported) to your maps",
-      "value" : false,
-      "show" : false,
-      "disabled" : false,
-      "bindable" : ""
-    },
-    "transitlayer" : {
-      "type" : "boolean",
-      "displayName" : "Transit Layer",
-      "description" : "This property is used to enable real-time local transit information (where supported) to your maps",
-      "value" : false,
-      "show" : false,
       "disabled" : false,
       "bindable" : ""
     },
     "distance" : {
       "type" : "string",
+      "displayName" : "Distance",
       "bindable" : "out-bound",
       "description" : "",
       "value" : ""
     },
     "duration" : {
       "type" : "string",
+      "displayName" : "Duration",
       "bindable" : "out-bound",
       "description" : "",
       "value" : ""
@@ -234,33 +283,35 @@
   },
   "methods" : {
     "refresh" : {
-      "description" : "refresh description",
+      "description" : "This method is used to refresh the map.",
       "parameters" : [ ],
       "returnType" : "any",
-      "example" : ""
+      "example" : "",
+      "displayName" : "Refresh"
     },
     "clearMarkers" : {
-      "description" : "clearMarkers description",
+      "description" : "This method is used to clear markers on the map.",
       "parameters" : [ ],
       "returnType" : "any",
-      "example" : ""
+      "example" : "",
+      "displayName" : "Clearmarkers"
     }
   },
   "events" : {
     "onClick" : {
-      "description" : "",
+      "description" : "This event handler will be triggered on click event of a map. This event is available only for map of type 'marker'.",
       "eventData" : "",
-      "helpText" : "This event handler is called upon the click of map."
+      "displayName" : "On Click"
     },
     "onMarkerclick" : {
-      "description" : "",
+      "description" : "This event handler will be triggered on click event of a map marker. This event is available only for map of type 'marker'.",
       "eventData" : "",
-      "helpText" : "This event handler is called when the marker is clicked."
+      "displayName" : "On Marker Click"
     },
     "onMarkerhover" : {
-      "description" : "",
+      "description" : "This event handler will be triggered on hover of a map marker. This event is available only for map of type 'marker'.",
       "eventData" : "",
-      "helpText" : "This event handler is called when the marker is hovered."
+      "displayName" : "On Marker Hover"
     }
   }
 }

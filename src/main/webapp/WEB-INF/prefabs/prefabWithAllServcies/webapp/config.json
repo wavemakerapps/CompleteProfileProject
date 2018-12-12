@@ -1,34 +1,34 @@
 {
   "displayName" : "prefabWithAllServcies",
   "group" : "",
-  "iconUrl" : "/resources/images/imagelists/prefab-icon.png",
+  "iconUrl" : "/resources/images/imagelists/dices.jpg",
   "resources" : {
     "styles" : [ "/pages/Main/Main.css" ],
-    "scripts" : [ ],
-    "modules" : [ ]
+    "scripts" : [ ]
   },
   "properties" : {
     "jsinput" : {
       "type" : "string",
       "displayName" : "Jsinput",
+      "description" : "jsinput",
       "bindable" : "in-bound",
       "value" : "world",
       "widget" : "string",
       "show" : true,
-      "disabled" : false,
-      "description" : ""
+      "disabled" : false
     },
     "cookie" : {
       "type" : "string",
       "displayName" : "Cookie",
+      "description" : "cookie value",
       "bindable" : "in-out-bound",
+      "value" : "auth_cookie=NWX8zrMQqgmrffbjXzXgFfLK28d41ce04f0fa5",
       "widget" : "string",
       "show" : true,
-      "disabled" : false,
-      "description" : "",
-      "value" : ""
+      "disabled" : false
     }
   },
+  "events" : { },
   "methods" : {
     "restService" : {
       "description" : "Wavemakeronline2Invoke description",
@@ -36,6 +36,5 @@
       "returnType" : "any",
       "example" : ""
     }
-  },
-  "events" : { }
+  }
 }

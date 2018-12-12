@@ -19,6 +19,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
 
+import com.wavemaker.commons.MessageResource;
 import com.wavemaker.runtime.data.dao.WMGenericDao;
 import com.wavemaker.runtime.data.exception.EntityNotFoundException;
 import com.wavemaker.runtime.data.export.DataExportOptions;
@@ -106,7 +107,7 @@ public class YearServiceImpl implements YearService {
         Year deleted = this.wmGenericDao.findById(yearId);
         if (deleted == null) {
             LOGGER.debug("No Year found with id: {}", yearId);
-            throw new EntityNotFoundException(String.valueOf(yearId));
+            throw new EntityNotFoundException(MessageResource.create("com.wavemaker.runtime.entity.not.found"), Year.class.getSimpleName(), yearId);
         }
         this.wmGenericDao.delete(deleted);
         return deleted;
