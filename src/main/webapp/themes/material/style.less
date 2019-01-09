@@ -782,7 +782,7 @@
     }
   }
   .form-control[disabled] {
-    background-color: transparent;
+    background-color: @gray-lighter;
     background-image: none;
     border-bottom: 1px dotted rgba(0,0,0,0.1);
   }
@@ -1203,6 +1203,18 @@
     }
   }
 
+  /***wizard styles***/
+  .app-wizard {
+    .app-wizard-steps {
+        .app-wizard-step:not(:last-child) {
+           &.active .arrow {
+             border-color: @component-active-color;
+           }
+        }
+    }
+  }
+
+
   //carousel styling: removing the left and right background image
   .carousel-control {
     &.left, &.right {
@@ -1312,7 +1324,6 @@
         }
         .panel-actions {
             .panel-action {
-                top: -0.2em;
                 a {
                   &:focus, &:hover {
                     text-decoration: none;

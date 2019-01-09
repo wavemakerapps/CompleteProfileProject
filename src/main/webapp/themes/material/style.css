@@ -32,6 +32,7 @@
   /****Input addon***/
   /******grid styles*******/
   /*** pagination***/
+  /***wizard styles***/
   /****accordion classes****/
   /**** panel *****/
   /*** dropdown menu*****/
@@ -6041,7 +6042,7 @@ button.wm-app .close {
   filter: alpha(opacity=50);
 }
 .wm-app .modal-header {
-  padding: 1.5em 1em 1.5em 2em;
+  padding: 1.5em 1em;
   border-bottom: 1px solid transparent;
 }
 .wm-app .modal-header .close {
@@ -7572,7 +7573,7 @@ button.wm-app .close {
   box-shadow: none;
 }
 .wm-app .form-control[disabled] {
-  background-color: transparent;
+  background-color: #e5e5e5;
   background-image: none;
   border-bottom: 1px dotted rgba(0, 0, 0, 0.1);
 }
@@ -7918,6 +7919,9 @@ button.wm-app .close {
 .wm-app .pagination li > span {
   color: #448AFF;
 }
+.wm-app .app-wizard .app-wizard-steps .app-wizard-step:not(:last-child).active .arrow {
+  border-color: #fff;
+}
 .wm-app .carousel-control.left,
 .wm-app .carousel-control.right {
   background-image: none;
@@ -8011,10 +8015,6 @@ button.wm-app .close {
   font-style: normal;
   margin-top: 5px;
   opacity: .7;
-}
-.wm-app .panel .panel-heading .panel-actions .panel-action,
-.wm-app .card .panel-heading .panel-actions .panel-action {
-  top: -0.2em;
 }
 .wm-app .panel .panel-heading .panel-actions .panel-action a:focus,
 .wm-app .card .panel-heading .panel-actions .panel-action a:focus,

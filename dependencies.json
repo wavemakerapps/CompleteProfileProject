@@ -15,7 +15,7 @@
   "artifactDependencyList" : null
 }, {
   "name" : "material",
-  "version" : "3.7",
+  "version" : "3.9",
   "artifactType" : "THEME",
   "artifactDependencyList" : null
 } ]
