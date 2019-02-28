@@ -1,0 +1,6 @@
+{
+  "id" : "CountryInfoService",
+  "type" : "SoapService",
+  "packageNames" : [ "com.completeprofileproject.services.countryinfoservice" ],
+  "title" : "CountryInfoService"
+}

@@ -1,0 +1,7 @@
+{
+  "id" : "MyJavaService",
+  "type" : "JavaService",
+  "packageNames" : [ "com.completeprofileproject.myjavaservice" ],
+  "serviceClassNames" : [ "com.completeprofileproject.myjavaservice.MyJavaService" ],
+  "title" : "MyJavaService"
+}

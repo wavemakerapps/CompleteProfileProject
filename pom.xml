@@ -121,6 +121,59 @@
         </pluginManagement>
         <plugins>
             <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>properties-maven-plugin</artifactId>
+                <version>1.0.0</version>
+                <executions>
+                    <execution>
+                        <phase>initialize</phase>
+                        <goals>
+                            <goal>read-project-properties</goal>
+                        </goals>
+                        <configuration>
+                            <files>
+                                <file>profiles/${profile.props.file}</file>
+              </files>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.gmaven</groupId>
+                <artifactId>gmaven-plugin</artifactId>
+                <version>1.5</version>
+                <executions>
+                    <execution>
+                        <id>add-dynamic-properties</id>
+                        <phase>initialize</phase>
+                        <goals>
+                            <goal>execute</goal>
+                        </goals>
+                        <configuration>
+                            <source>if (project.properties.get('build.ui.mode') != null) {
+                                    if (project.properties.get('build.ui.mode').equalsIgnoreCase('angular')) {
+                                        project.properties.webAppDirectory = 'target/codegen/generated-app/dist'
+                                    }
+                                }
+                                if (project.properties.get('webAppDirectory') == null) {
+                                    project.properties.webAppDirectory = 'src/main/webapp'
+                                }</source>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.4</version>
+                <configuration>
+                    <webResources>
+                        <resource>
+                            <directory>${webAppDirectory}</directory>
+            </resource>
+          </webResources>
+                </configuration>
+            </plugin>
+            <plugin>
                 <artifactId>maven-resources-plugin</artifactId>
                 <version>3.0.1</version>
                 <configuration>
@@ -193,6 +246,18 @@
               </target>
                         </configuration>
                     </execution>
+                    <execution>
+                        <id>UI Build</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <target>
+                                <ant antfile="${basedir}/build.xml" target="uiBuild"/>
+              </target>
+                        </configuration>
+                    </execution>
                 </executions>
             </plugin>
             <plugin>
@@ -204,31 +269,6 @@
                     <fork>true</fork>
                     <encoding>UTF-8</encoding>
                 </configuration>
-            </plugin>
-            <plugin>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <version>2.10</version>
-                <executions>
-                    <execution>
-                        <id>unpack-wmapp-artifact</id>
-                        <phase>generate-sources</phase>
-                        <goals>
-                            <goal>unpack</goal>
-                        </goals>
-                        <configuration>
-                            <outputDirectory>${basedir}/src/main/webapp/wmapp</outputDirectory>
-                            <artifactItems>
-                                <artifactItem>
-                                    <groupId>com.wavemaker.runtime</groupId>
-                                    <artifactId>wavemaker-app-runtime</artifactId>
-                                    <version>${wavemaker.studio.version}</version>
-                                    <classifier>wmapp</classifier>
-                                    <type>zip</type>
-                </artifactItem>
-              </artifactItems>
-                        </configuration>
-                    </execution>
-                </executions>
             </plugin>
             <plugin>
                 <groupId>com.wavemaker.app.build</groupId>
@@ -389,11 +429,14 @@
         </dependencies>
     </dependencyManagement>
     <properties>
-        <spring.version>4.3.19.RELEASE</spring.version>
+        <wavemaker.artifactType>wmapp</wavemaker.artifactType>
+        <wavemaker.artifactStaticFolder>wmapp</wavemaker.artifactStaticFolder>
+        <spring.version>5.1.4.RELEASE</spring.version>
         <profile.props.file>development.properties</profile.props.file>
         <spring.security.version>5.0.8.RELEASE</spring.security.version>
-        <wavemaker.studio.version>9.9.9.6231</wavemaker.studio.version>
+        <wavemaker.studio.version>9.9.9.6502</wavemaker.studio.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.lib.directory>${basedir}/lib</project.lib.directory>
+        <wavemaker.studio.release.version>10.0.0</wavemaker.studio.release.version>
     </properties>
 </project>

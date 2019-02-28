@@ -30,3 +30,5 @@ src/main/webapp/WEB-INF/prefabs/*/build/**
 src/main/webapp/pages/*/page.min.json
 backup/**
 src/main/webapp/WEB-INF/prefabs/*/webapp/pages/page.min.json
+generated-angular-app/**
+inspection_results.json

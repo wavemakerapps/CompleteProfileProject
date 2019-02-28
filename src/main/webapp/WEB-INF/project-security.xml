@@ -30,7 +30,6 @@
         </property>
         <property name="rolesConfig" ref="rolesConfig"/>
         <property name="loginConfig" ref="loginConfig"/>
-        <property name="rememberMeConfig" ref="rememberMeConfig"/>
         <property name="tokenAuthConfig" ref="tokenAuthConfig"/>
         <property name="csrfConfig" ref="csrfConfig"/>
     </bean>
@@ -62,11 +61,11 @@
     <security:http pattern="/app.css" security="none"/>
     <security:http pattern="/app.js" security="none"/>
     <security:http pattern="/app.variables.json" security="none"/>
-    <security:http pattern="/index.html" security="none"/>
     <security:http pattern="/login.html" security="none"/>
     <security:http pattern="/favicon.ico" security="none"/>
     <security:http pattern="/print.css" security="none"/>
     <security:http pattern="/services/application/wmProperties.js" security="none"/>
+    <security:http pattern="/services/webprocess/**" security="none"/>
     <security:http pattern="/cordova.js" security="none"/>
     <security:http pattern="/config.json" security="none"/>
     <security:http pattern="/types.js" security="none"/>
@@ -78,6 +77,7 @@
     <security:http pattern="/**/wmmobile/**" security="none"/>
     <security:http pattern="/app/prefabs/**" security="none"/>
     <security:http authentication-manager-ref="authenticationManager" auto-config="false" create-session="stateless" disable-url-rewriting="true" entry-point-ref="appAuthenticationEntryPoint" name="interceptUrlsBean" security-context-repository-ref="securityContextRepository" use-expressions="true">
+        <security:intercept-url access="permitAll" pattern="/index.html"/>
         <security:intercept-url access="permitAll" pattern="/j_spring_security_check"/>
         <security:csrf disabled="true"/>
         <security:intercept-url access="permitAll" pattern="/j_spring_security_logout"/>
@@ -92,11 +92,11 @@
         <security:headers disabled="true"/>
         <security:request-cache ref="nullRequestCache"/>
         <security:custom-filter before="PRE_AUTH_FILTER" ref="wmTokenBasedPreAuthenticatedProcessingFilter"/>
-        <security:custom-filter position="REMEMBER_ME_FILTER" ref="rememberMeAuthFilter"/>
         <security:custom-filter position="LOGOUT_FILTER" ref="logoutFilter"/>
         <security:custom-filter position="BASIC_AUTH_FILTER" ref="WMBasicAuthenticationFilter"/>
         <security:custom-filter position="FORM_LOGIN_FILTER" ref="WMSecAuthFilter"/>
         <security:custom-filter position="CSRF_FILTER" ref="wmcsrfFilter"/>
+        <security:custom-filter after="SECURITY_CONTEXT_FILTER" ref="loginWebProcessFilter"/>
     </security:http>
     <bean class="org.springframework.security.web.authentication.session.SessionFixationProtectionStrategy" id="sessionFixationProtectionStrategy"/>
     <bean class="org.springframework.security.web.csrf.CsrfAuthenticationStrategy" id="csrfAuthenticationStrategy">
@@ -104,22 +104,10 @@
     </bean>
     <security:authentication-manager id="authenticationManager">
         <security:authentication-provider ref="adAuthProvider"/>
-        <security:authentication-provider ref="rememberMeAuthenticationProvider"/>
     </security:authentication-manager>
     <bean class="com.wavemaker.runtime.security.WMAppAccessDeniedHandler" id="wmAppAccessDeniedHandler"/>
     <bean class="com.wavemaker.runtime.security.csrf.CsrfSecurityRequestMatcher" id="csrfSecurityRequestMatcher">
         <property name="csrfConfig" ref="csrfConfig"/>
-    </bean>
-    <bean class="org.springframework.security.web.authentication.logout.LogoutFilter" id="logoutFilter">
-        <constructor-arg ref="logoutSuccessHandler"/>
-        <constructor-arg>
-            <list>
-                <ref bean="securityContextLogoutHandler"/>
-                <ref bean="rememberMeServices"/>
-                <ref bean="wmCsrfLogoutHandler"/>
-            </list>
-        </constructor-arg>
-        <property name="filterProcessesUrl" value="/j_spring_security_logout"/>
     </bean>
     <bean class="com.wavemaker.runtime.security.csrf.WMCsrfLogoutHandler" id="wmCsrfLogoutHandler">
         <constructor-arg>
@@ -136,12 +124,6 @@
     </bean>
     <bean class="com.wavemaker.runtime.security.token.WMTokenBasedAuthenticationService" id="wmTokenBasedAuthenticationService"/>
     <bean class="com.wavemaker.runtime.security.WMAuthenticationFailureHandler" id="failureHandler"/>
-    <bean class="com.wavemaker.runtime.security.rememberme.WMAppRememberMeServices" id="rememberMeServices">
-        <constructor-arg value="WM_APP_KEY"/>
-    </bean>
-    <bean class="org.springframework.security.authentication.RememberMeAuthenticationProvider" id="rememberMeAuthenticationProvider">
-        <constructor-arg value="WM_APP_KEY"/>
-    </bean>
     <bean class="com.wavemaker.commons.model.security.LoginConfig" id="loginConfig">
         <property name="pageName" value="Login"/>
         <property name="sessionTimeout">
@@ -160,10 +142,6 @@
     <bean class="com.wavemaker.commons.model.security.CSRFConfig" id="csrfConfig">
         <property name="enforceCsrfSecurity" value="${general.xsrf.enabled}"/>
         <property name="headerName" value="X-WM-XSRF-TOKEN"/>
-    </bean>
-    <bean class="com.wavemaker.commons.model.security.RememberMeConfig" id="rememberMeConfig">
-        <property name="enabled" value="${general.rememberMe.enabled}"/>
-        <property name="tokenValiditySeconds" value="${general.rememberMe.timeOut}"/>
     </bean>
     <bean class="com.wavemaker.commons.model.security.RolesConfig" id="rolesConfig">
         <property name="roleMap">
@@ -194,7 +172,6 @@
         <property name="filterProcessesUrl" value="/j_spring_security_check"/>
         <property name="usernameParameter" value="j_username"/>
         <property name="passwordParameter" value="j_password"/>
-        <property name="rememberMeServices" ref="rememberMeServices"/>
     </bean>
     <bean class="com.wavemaker.runtime.security.WMAuthenticationEntryPoint" id="WMSecAuthEntryPoint">
         <constructor-arg value="/index.html"/>
@@ -264,19 +241,6 @@
     <bean class="com.wavemaker.runtime.security.filter.WMBasicAuthenticationFilter" id="WMBasicAuthenticationFilter">
         <constructor-arg ref="authenticationManager"/>
     </bean>
-    <bean class="com.wavemaker.runtime.security.rememberme.WMRememberMeAuthenticationFilter" id="rememberMeAuthFilter">
-        <constructor-arg ref="authenticationManager"/>
-        <constructor-arg ref="rememberMeServices"/>
-        <property name="authenticationSuccessHandler" ref="rememberMeAuthenticationSuccessHandler"/>
-    </bean>
-    <bean class="com.wavemaker.runtime.security.handler.WMApplicationAuthenticationSuccessHandler" id="rememberMeAuthenticationSuccessHandler">
-        <property name="defaultSuccessHandlerList">
-            <list>
-                <ref bean="wmSecurityContextRepositorySuccessHandler"/>
-                <ref bean="wmCsrfTokenRepositorySuccessHandler"/>
-            </list>
-        </property>
-    </bean>
     <bean class="com.wavemaker.runtime.security.handler.WMCsrfTokenRepositorySuccessHandler" id="wmCsrfTokenRepositorySuccessHandler">
         <constructor-arg ref="csrfTokenRepository"/>
     </bean>
@@ -300,4 +264,16 @@
         <property name="authenticationSuccessRedirectionHandler" ref="wmAuthenticationSuccessRedirectionHandler"/>
     </bean>
     <bean class="com.wavemaker.runtime.security.handler.WMAuthenticationSuccessRedirectionHandler" id="wmAuthenticationSuccessRedirectionHandler"/>
+    <bean class="org.springframework.security.web.authentication.logout.LogoutFilter" id="logoutFilter">
+        <constructor-arg ref="logoutSuccessHandler"/>
+        <constructor-arg>
+            <list>
+                <ref bean="securityContextLogoutHandler"/>
+                <ref bean="wmCsrfLogoutHandler"/>
+            </list>
+        </constructor-arg>
+        <property name="filterProcessesUrl" value="/j_spring_security_logout"/>
+    </bean>
+    <bean class="com.wavemaker.runtime.security.token.repository.WMTokenRepository" id="tokenRepository"/>
+    <bean class="com.wavemaker.runtime.webprocess.filter.LoginProcessFilter" id="loginWebProcessFilter"/>
 </beans>
