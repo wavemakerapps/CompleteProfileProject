@@ -27,3 +27,5 @@ src/main/webapp/wmmobile/**
 src/main/webapp/wmProperties.js
 target/**
 src/main/webapp/WEB-INF/prefabs/*/build/**
+
+src/main/webapp/WEB-INF/data/*.properties

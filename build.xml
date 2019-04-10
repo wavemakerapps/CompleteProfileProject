@@ -22,19 +22,19 @@
 
     <target name="cdnUrl-replace">
         <replaceregexp file="src/main/webapp/index.html" byline="true">
-            <regexp pattern="/studio/_static_/*.*.*.*/wmapp"/>
+            <regexp pattern="/studio/.*/wmapp"/>
             <substitution expression="_cdnUrl_/wmapp"/>
         </replaceregexp>
         <replaceregexp file="src/main/webapp/index.html" byline="true">
-            <regexp pattern="//.*.cloudfront.net/studio-app/.*.*.*.*/wmapp"/>
+            <regexp pattern="//.*.cloudfront.net/studio-app/.*/wmapp"/>
             <substitution expression="_cdnUrl_/wmapp"/>
         </replaceregexp>
         <replaceregexp file="src/main/webapp/index.html" byline="true">
-            <regexp pattern="/studio/_static_/*.*.*.*/wmmobile"/>
+            <regexp pattern="/studio/.*/wmmobile"/>
             <substitution expression="_cdnUrl_/wmmobile"/>
         </replaceregexp>
         <replaceregexp file="src/main/webapp/index.html" byline="true">
-            <regexp pattern="//.*.cloudfront.net/studio-app/.*.*.*.*/wmmobile"/>
+            <regexp pattern="//.*.cloudfront.net/studio-app/.*/wmmobile"/>
             <substitution expression="_cdnUrl_/wmmobile"/>
         </replaceregexp>
     </target>
