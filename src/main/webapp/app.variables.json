@@ -69,22 +69,22 @@
     "owner" : "App",
     "category" : "wm.LoginVariable",
     "dataBinding" : [ {
-      "target" : "username",
-      "value" : "bind:Widgets.usernametext.datavalue",
+      "target" : "j_username",
+      "value" : "bind:Widgets.j_username.datavalue",
       "type" : "string"
     }, {
-      "target" : "password",
-      "value" : "bind:Widgets.passwordtext.datavalue",
+      "target" : "j_password",
+      "value" : "bind:Widgets.j_password.datavalue",
       "type" : "string"
     }, {
-      "target" : "rememberme",
-      "value" : "bind:Widgets.remembermecheck.datavalue",
+      "target" : "j_rememberme",
+      "value" : "bind:Widgets.j_rememberme.datavalue",
       "type" : "boolean"
     } ],
     "dataSet" : {
-      "username" : "",
-      "password" : "",
-      "rememberme" : false
+      "j_password" : "",
+      "j_rememberme" : false,
+      "j_username" : ""
     },
     "type" : "string",
     "saveInPhonegap" : false,

@@ -1,0 +1,5 @@
+{
+  "id" : "googleOauth",
+  "type" : "RestService",
+  "title" : "googleOauth"
+}

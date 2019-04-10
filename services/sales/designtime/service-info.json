@@ -1,0 +1,6 @@
+{
+  "id" : "sales",
+  "type" : "DataService",
+  "packageNames" : [ "com.completeprofileproject.sales" ],
+  "title" : "sales"
+}

@@ -1,5 +1,5 @@
 {
-  "basePath" : "${rest.googleOauth.basepath}",
+  "basePath" : "${googleOauth.basepath}",
   "paths" : {
     "/v1/userinfo" : {
       "x-WM-BASE_PATH" : "/v1/userinfo",
@@ -24,11 +24,11 @@
         "tags" : [ "RestServiceVirtualController" ],
         "consumes" : [ "application/json" ]
       },
-      "x-WM-COMPLETE_PATH" : "${rest.googleOauth.scheme}://${rest.googleOauth.host}${rest.googleOauth.basepath}/v1/userinfo"
+      "x-WM-COMPLETE_PATH" : "${googleOauth.scheme}://${googleOauth.host}${googleOauth.basepath}/v1/userinfo"
     }
   },
-  "host" : "${rest.googleOauth.host}",
-  "schemes" : [ "${rest.googleOauth.scheme}" ],
+  "host" : "${googleOauth.host}",
+  "schemes" : [ "${googleOauth.scheme}" ],
   "securityDefinitions" : {
     "oauth2" : {
       "accessTokenParamName" : "Bearer",

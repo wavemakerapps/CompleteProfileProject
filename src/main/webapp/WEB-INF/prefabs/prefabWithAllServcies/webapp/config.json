@@ -1,9 +1,6 @@
 {
   "displayName" : "prefabWithAllServcies",
   "group" : "",
-  "templateUrl" : "/pages/Main/Main.html",
-  "controllerUrl" : "/pages/Main/Main.js",
-  "variablesUrl" : "/pages/Main/Main.variables.json",
   "iconUrl" : "/resources/images/imagelists/prefab-icon.png",
   "resources" : {
     "styles" : [ "/pages/Main/Main.css" ],
@@ -18,7 +15,8 @@
       "value" : "world",
       "widget" : "string",
       "show" : true,
-      "disabled" : false
+      "disabled" : false,
+      "description" : ""
     },
     "cookie" : {
       "type" : "string",
@@ -26,11 +24,18 @@
       "bindable" : "in-out-bound",
       "widget" : "string",
       "show" : true,
-      "disabled" : false
-    },
-    "restService" : {
-      "type" : "method",
-      "method" : "Wavemakeronline2Invoke"
+      "disabled" : false,
+      "description" : "",
+      "value" : ""
     }
-  }
+  },
+  "methods" : {
+    "restService" : {
+      "description" : "Wavemakeronline2Invoke description",
+      "parameters" : [ ],
+      "returnType" : "any",
+      "example" : ""
+    }
+  },
+  "events" : { }
 }

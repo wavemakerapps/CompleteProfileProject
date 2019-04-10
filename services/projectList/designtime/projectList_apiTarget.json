@@ -6,7 +6,8 @@
     "x-WM-USE_PROXY_FOR_MOBILE" : true,
     "x-WM-API_ID" : "effa3631-9e02-4262-847a-c6caad56dbee",
     "x-WM-SERVICE_ID" : "wavemakeronline",
-    "x-WM-SERVICE_TYPE" : "RestService"
+    "x-WM-SERVICE_TYPE" : "RestService",
+    "x-WM-USE_WITH_CREDENTIALS" : false
   },
   "host" : "stage-studio.wavemakeronline.com",
   "basePath" : "/edn-services",

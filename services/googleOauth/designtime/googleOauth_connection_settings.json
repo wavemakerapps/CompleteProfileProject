@@ -31,6 +31,5 @@
     },
     "responseBody" : "{\"id\":\"109462032523621889002\",\"name\":\"wavemaker wavemaker\",\"given_name\":\"wavemaker\",\"family_name\":\"wavemaker\",\"picture\":\"https://lh5.googleusercontent.com/-qsEORT3MXnY/AAAAAAAAAAI/AAAAAAAAAA4/n1n5YjjQ8P8/photo.jpg\",\"locale\":\"en\"}",
     "convertedResponse" : null
-  },
-  "proxy" : null
+  }
 }

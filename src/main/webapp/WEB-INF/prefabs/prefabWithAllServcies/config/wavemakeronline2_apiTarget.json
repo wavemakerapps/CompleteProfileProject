@@ -1,5 +1,5 @@
 {
-  "basePath" : "${rest.wavemakeronline2.basepath}",
+  "basePath" : "${wavemakeronline2.basepath}",
   "paths" : {
     "/rest/users/projects/list" : {
       "x-WM-BASE_PATH" : "/rest/users/projects/list",
@@ -36,11 +36,11 @@
         "tags" : [ "RestServiceVirtualController" ],
         "consumes" : [ "application/json" ]
       },
-      "x-WM-COMPLETE_PATH" : "${rest.wavemakeronline2.scheme}://${rest.wavemakeronline2.host}${rest.wavemakeronline2.basepath}/rest/users/projects/list"
+      "x-WM-COMPLETE_PATH" : "${wavemakeronline2.scheme}://${wavemakeronline2.host}${wavemakeronline2.basepath}/rest/users/projects/list"
     }
   },
-  "host" : "${rest.wavemakeronline2.host}",
-  "schemes" : [ "${rest.wavemakeronline2.scheme}" ],
+  "host" : "${wavemakeronline2.host}",
+  "schemes" : [ "${wavemakeronline2.scheme}" ],
   "definitions" : {
     "permissions" : {
       "x-WM-FULLY_QUALIFIED_NAME" : "wavemakeronline2.permissions",

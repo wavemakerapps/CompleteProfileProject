@@ -1,5 +1,5 @@
 {
-  "basePath" : "${rest.projectList.basepath}",
+  "basePath" : "${projectList.basepath}",
   "paths" : {
     "/rest/users/projects/list" : {
       "x-WM-BASE_PATH" : "/rest/users/projects/list",
@@ -37,11 +37,11 @@
         "tags" : [ "RestServiceVirtualController" ],
         "consumes" : [ "application/json" ]
       },
-      "x-WM-COMPLETE_PATH" : "${rest.projectList.scheme}://${rest.projectList.host}${rest.projectList.basepath}/rest/users/projects/list"
+      "x-WM-COMPLETE_PATH" : "${projectList.scheme}://${projectList.host}${projectList.basepath}/rest/users/projects/list"
     }
   },
-  "host" : "${rest.projectList.host}",
-  "schemes" : [ "${rest.projectList.scheme}" ],
+  "host" : "${projectList.host}",
+  "schemes" : [ "${projectList.scheme}" ],
   "definitions" : {
     "permissions" : {
       "x-WM-FULLY_QUALIFIED_NAME" : "projectList.permissions",

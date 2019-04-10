@@ -6,7 +6,8 @@
     "x-WM-USE_PROXY_FOR_MOBILE" : true,
     "x-WM-API_ID" : "02ae2e34-e246-4642-aad7-9dbd6428ae84",
     "x-WM-SERVICE_ID" : "googleapis",
-    "x-WM-SERVICE_TYPE" : "RestService"
+    "x-WM-SERVICE_TYPE" : "RestService",
+    "x-WM-USE_WITH_CREDENTIALS" : false
   },
   "host" : "www.googleapis.com",
   "basePath" : "/oauth2",

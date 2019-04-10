@@ -1,0 +1,6 @@
+{
+  "id" : "testProfileDB",
+  "type" : "DataService",
+  "packageNames" : [ "com.completeprofileproject.testprofiledb" ],
+  "title" : "testProfileDB"
+}
