@@ -84,6 +84,20 @@ public interface Table33Service {
      */
     Table33 update(@Valid Table33 table33);
 
+
+    /**
+     * Partially updates the details of an existing Table33. It updates only the
+     * fields of the existing Table33 which are passed in the table33Patch.
+     *
+     * This method overrides the input field values using Server side or database managed properties defined on Table33 if any.
+     *
+     * @param table33Id The id of the Table33 to be deleted; value cannot be null.
+     * @param table33Patch The partial data of Table33 which is supposed to be updated; value cannot be null.
+     * @return The updated Table33.
+     * @throws EntityNotFoundException if no Table33 is found with given input.
+     */
+    Table33 partialUpdate(Integer table33Id, Map<String, Object> table33Patch);
+
     /**
      * Deletes an existing Table33 with the given id.
      *

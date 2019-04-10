@@ -84,6 +84,20 @@ public interface ProductcatalogService {
      */
     Productcatalog update(@Valid Productcatalog productcatalog);
 
+
+    /**
+     * Partially updates the details of an existing Productcatalog. It updates only the
+     * fields of the existing Productcatalog which are passed in the productcatalogPatch.
+     *
+     * This method overrides the input field values using Server side or database managed properties defined on Productcatalog if any.
+     *
+     * @param productcatalogId The id of the Productcatalog to be deleted; value cannot be null.
+     * @param productcatalogPatch The partial data of Productcatalog which is supposed to be updated; value cannot be null.
+     * @return The updated Productcatalog.
+     * @throws EntityNotFoundException if no Productcatalog is found with given input.
+     */
+    Productcatalog partialUpdate(Integer productcatalogId, Map<String, Object> productcatalogPatch);
+
     /**
      * Deletes an existing Productcatalog with the given id.
      *

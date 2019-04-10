@@ -84,6 +84,20 @@ public interface SaleService {
      */
     Sale update(@Valid Sale sale);
 
+
+    /**
+     * Partially updates the details of an existing Sale. It updates only the
+     * fields of the existing Sale which are passed in the salePatch.
+     *
+     * This method overrides the input field values using Server side or database managed properties defined on Sale if any.
+     *
+     * @param saleId The id of the Sale to be deleted; value cannot be null.
+     * @param salePatch The partial data of Sale which is supposed to be updated; value cannot be null.
+     * @return The updated Sale.
+     * @throws EntityNotFoundException if no Sale is found with given input.
+     */
+    Sale partialUpdate(Integer saleId, Map<String, Object> salePatch);
+
     /**
      * Deletes an existing Sale with the given id.
      *

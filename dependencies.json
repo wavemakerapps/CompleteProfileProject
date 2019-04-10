@@ -1,17 +1,21 @@
 [ {
-  "name" : "googlemaps",
-  "version" : "5.6",
-  "artifactType" : "PREFAB"
-}, {
   "name" : "prefabWithAllServcies",
   "version" : "1.08",
-  "artifactType" : "PREFAB"
+  "artifactType" : "PREFAB",
+  "artifactDependencyList" : null
 }, {
   "name" : "testPrefab4324",
   "version" : "1.01",
-  "artifactType" : "PREFAB"
+  "artifactType" : "PREFAB",
+  "artifactDependencyList" : null
+}, {
+  "name" : "googlemaps",
+  "version" : "6.3",
+  "artifactType" : "PREFAB",
+  "artifactDependencyList" : null
 }, {
   "name" : "material",
-  "version" : "2.8",
-  "artifactType" : "THEME"
+  "version" : "3.9",
+  "artifactType" : "THEME",
+  "artifactDependencyList" : null
 } ]

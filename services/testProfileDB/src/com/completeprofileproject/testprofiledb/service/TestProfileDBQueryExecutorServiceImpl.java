@@ -48,7 +48,7 @@ public class TestProfileDBQueryExecutorServiceImpl implements TestProfileDBQuery
         Map<String, Object> params = new HashMap<>(0);
 
 
-        QueryProcedureInput queryInput = new QueryProcedureInput("testQuery", params, TestQueryResponse.class);
+        QueryProcedureInput<TestQueryResponse> queryInput = new QueryProcedureInput<>("testQuery", params, TestQueryResponse.class);
 
         queryExecutor.exportNamedQueryData(queryInput, exportOptions, pageable, outputStream);
     }

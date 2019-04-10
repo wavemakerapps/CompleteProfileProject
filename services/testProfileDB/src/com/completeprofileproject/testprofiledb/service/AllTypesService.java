@@ -84,6 +84,20 @@ public interface AllTypesService {
      */
     AllTypes update(@Valid AllTypes allTypes);
 
+
+    /**
+     * Partially updates the details of an existing AllTypes. It updates only the
+     * fields of the existing AllTypes which are passed in the allTypesPatch.
+     *
+     * This method overrides the input field values using Server side or database managed properties defined on AllTypes if any.
+     *
+     * @param alltypesId The id of the AllTypes to be deleted; value cannot be null.
+     * @param allTypesPatch The partial data of AllTypes which is supposed to be updated; value cannot be null.
+     * @return The updated AllTypes.
+     * @throws EntityNotFoundException if no AllTypes is found with given input.
+     */
+    AllTypes partialUpdate(Integer alltypesId, Map<String, Object> allTypesPatch);
+
     /**
      * Deletes an existing AllTypes with the given id.
      *

@@ -272,6 +272,7 @@
      .btn {
         box-shadow: none;
         border-color: transparent;
+        border-bottom-color: @btn-default-border;
      }
   }
 
@@ -425,6 +426,29 @@
     }
   }
 
+  //Popover wrapper styles in Navbar
+  .nav li > .app-popover-wrapper a {
+    padding: @nav-link-padding;
+    &:hover, &:focus {
+      background-color: @nav-link-hover-bg;
+    }
+  }
+  .nav-pills {
+    > li {
+      .app-popover-wrapper a {
+        border-radius: @border-radius-base;
+      }
+      &.active .app-popover-wrapper a {
+        color: @nav-pills-active-link-hover-color;
+        background-color: @nav-pills-active-link-hover-bg;
+        &:hover, &:focus {
+          color: @nav-pills-active-link-hover-color;
+          background-color: @nav-pills-active-link-hover-bg;
+        }
+      }
+    }
+  }
+
   //Top Nav Bar
   .app-navbar {
     border-radius: 0;
@@ -432,7 +456,7 @@
     padding: 0 1.52em;
     .navbar-nav {
       li {
-        a {
+        a, .app-popover-wrapper a {
           font-size: 1em;
           padding: 1.2em;
           font-weight: normal;
@@ -440,7 +464,7 @@
           text-transform: uppercase;
           box-shadow: inset 0px -3px 0 0px transparent;
           color: @navbar-default-color;
-          &:hover, &:focus, &.active, &.app-popover-open {
+          &:hover, &:focus, &.active {
             color: @navbar-default-link-active-color;
             background-color: @navbar-default-hover-bg;
             -webkit-transition: color .3s ease;
@@ -448,11 +472,16 @@
             transition: color .3s ease;
           }
           &.active {
-            color: @navbar-default-link-active-color;
             box-shadow: inset 0px -3px 0 0px @wm-header-border-color;
           }
         }
-
+        > .dropdown .dropdown-menu, .app-popover-wrapper a {
+          line-height: @line-height-computed;
+        }
+        &.active .app-popover-wrapper a {
+          background-color: @navbar-default-link-active-bg;
+          color: @navbar-default-link-active-color;
+        }
         > .dropdown .dropdown-menu {
           margin: 0;
           background-color: @dropdown-bg;
@@ -467,10 +496,9 @@
           }
         }
       }
-
       .app-nav-item {
-        > .dropdown {
-          a.dropdown-toggle {
+          > .dropdown, .app-popover-wrapper {
+          a.dropdown-toggle, a {
             padding: 1.2em;
           }
           .dropdown-menu {
@@ -484,7 +512,6 @@
       }
     }
   }
-
   //Popover
   .popover {
     min-width: 16.667em;
@@ -493,16 +520,117 @@
     }
   }
 
+  //Navbar
+  .navbar-default .navbar-nav {
+    > li {
+       .app-popover-wrapper a {
+          padding: 1.2em;
+          color: @navbar-default-brand-color;
+          &:hover, &:focus, &:active {
+             color: @navbar-default-link-active-color;
+             background-color: @navbar-default-hover-bg;
+          }
+       }
+       &.active {
+           .app-popover-wrapper a {
+               background-color: @navbar-default-link-active-bg;
+               &:hover, &:focus, &:active {
+                 color: @navbar-default-link-active-color;
+                 background-color: @navbar-default-link-active-bg;
+               }
+           }
+       }
+    }
+  }
+  .navbar-inverse .navbar-nav {
+    > li.active .app-popover-wrapper {
+       a, a:hover, a:focus, a:active {
+          color: @navbar-inverse-link-hover-color;
+          background-color: @navbar-inverse-link-active-bg;
+       }
+    }
+  }
+  //Nav pills
+  .nav, .nav-pills {
+    > li {
+       .app-popover-wrapper {
+          a {
+            padding: @nav-link-padding;
+          }
+          a:hover, a:focus {
+             color: @brand-primary;
+             background-color: @nav-link-hover-bg;
+          }
+       }
+       &.active {
+         .app-popover-wrapper {
+             a, a:hover, a:focus {
+                color: @navbar-inverse-link-hover-color;
+                background-color: @brand-primary;
+             }
+         }
+
+       }
+    }
+  }
+
+  /****nav widget****/
+  .app-nav {
+    &.nav-pills, &.nav-justified {
+      .app-nav-item {
+        .app-menu {
+          .dropdown-toggle {
+            padding: @padding-base-horizontal;
+          }
+          &:hover {
+            color: @nav-pills-active-link-hover-bg;
+            background-color: @nav-link-hover-bg;
+          }
+        }
+        &.active {
+          a, .app-menu {
+            &.hover, &:focus {
+              color: @navbar-default-link-active-color;
+              background-color: @nav-pills-active-link-hover-bg;
+            }
+            &.open {
+              .dropdown-toggle {
+                color: @nav-pills-active-link-hover-color;
+                background-color: @nav-pills-active-link-hover-bg;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .nav-justified {
+    .app-nav-item {
+      .app-menu {
+        text-align: center;
+      }
+    }
+  }
+
+
+  .navbar-inverse .navbar-nav {
+    > li.active .app-popover-wrapper {
+      a, a:hover, a:focus, a:active {
+        color: @navbar-inverse-link-hover-color;
+        background-color: @navbar-inverse-link-active-bg;
+      }
+    }
+  }
   //Left & Right Panels
   .app-left-panel, .app-right-panel {
      box-shadow: 2px 2px 4px rgba(0,0,0,.15);
      -webkit-box-shadow: 2px 2px 4px rgba(0,0,0,.15);
      -moz-box-shadow: 2px 2px 4px rgba(0,0,0,.15);
-    .nav {
+    .nav, .app-nav.nav-pills {
       li {
         //for overriding the pills default color
         &.active {
-          > a {
+          > a, .app-popover-wrapper a {
             color: inherit;
             background-color: @wm-left-panel-link-active-bg;
             &:hover, &:focus {
@@ -514,7 +642,7 @@
         margin-top: 0;
         //border-bottom: @wm-left-panel-list-border;
 
-        a, .btn, .dropdown a, .dropdown a.dropdown-toggle, .app-popover a {
+        a, .btn, .dropdown a, .app-menu .dropdown-toggle, .app-popover-wrapper a {
           //letter-spacing: .025em;
           padding: 1em;
           position: relative;
@@ -577,44 +705,12 @@
             padding: 1.333em;
           }
         }
-      }
-    }
-  }
-
-  /****nav widget****/
-  .app-nav {
-    &.nav-pills, &.nav-justified {
-      .app-nav-item {
-        .app-menu {
+        &.active .app-menu.open {
           .dropdown-toggle {
-            padding: @padding-base-horizontal;
-          }
-          &:hover {
-            color: @nav-pills-active-link-hover-bg;
-            background-color: @nav-link-hover-bg;
+            background-color: @wm-left-panel-link-active-bg;
+            color: inherit;
           }
         }
-        &.active {
-          a, .app-menu {
-            &:active, &.hover, &:active:hover {
-              color: @navbar-default-link-active-color;
-              background-color: @nav-pills-active-link-hover-bg;
-            }
-            &.open {
-              .dropdown-toggle {
-                color: @nav-pills-active-link-hover-color;
-                background-color: @nav-pills-active-link-hover-bg;
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-  .nav-justified {
-    .app-nav-item {
-      .app-menu {
-        text-align: center;
       }
     }
   }
@@ -660,7 +756,7 @@
     .text-danger, .control-label.text-danger {
       color: @brand-danger;
     }
-    .ng-touched.ng-invalid {
+    .ng-touched.ng-invalid .form-control {
       border-color: transparent;
       background-image: none;
       border-bottom: 2px solid @brand-danger;
@@ -694,7 +790,7 @@
     }
   }
   .form-control[disabled] {
-    background-color: transparent;
+    background-color: @gray-lighter;
     background-image: none;
     border-bottom: 1px dotted rgba(0,0,0,0.1);
   }
@@ -708,6 +804,9 @@
         font-size: 18pt;
       }
     }
+  }
+  .model-holder[bsdatepicker] {
+    min-height: @input-height-base;
   }
   //**** form elements*****/
 
@@ -728,7 +827,7 @@
     }
     .caption {
       position: relative;
-      min-height: 1em;
+      min-height: 1.35em;
       cursor: pointer;
       padding-left: 27px;
       margin: 5px 0;
@@ -1112,6 +1211,18 @@
     }
   }
 
+  /***wizard styles***/
+  .app-wizard {
+    .app-wizard-steps {
+        .app-wizard-step:not(:last-child) {
+           &.active .arrow {
+             border-color: @component-active-color;
+           }
+        }
+    }
+  }
+
+
   //carousel styling: removing the left and right background image
   .carousel-control {
     &.left, &.right {
@@ -1189,7 +1300,9 @@
       }
     }
   }
-
+  .panel .app-accordion > .app-accordion-panel > .panel-heading {
+    border-bottom: 1px solid @gray-lighter;
+  }
   .panel-group {
     .panel-heading + .panel-collapse {
        > .panel-body {
@@ -1219,7 +1332,6 @@
         }
         .panel-actions {
             .panel-action {
-                top: -0.2em;
                 a {
                   &:focus, &:hover {
                     text-decoration: none;
@@ -1352,42 +1464,29 @@
           margin-left: 0;
         }
     }
-    //setting the base font color for the popup content
-    .dropdown-menu {
-      color: @text-color;
-    }
-
-    thead {
-      tr {
-        th {
-          .btn.uib-left, .btn.uib-right, .btn.uib-title {
-            color: @component-active-color;
-            background: transparent;
-            border-color: transparent;
-            box-shadow: none;
-            font-size: 1.24em;
-            padding: 1.4em 1em;
-            text-transform: uppercase;
-            &:hover, &:focus, &:active, &:active:hover, &:active:focus {
-               color: @component-active-color;
-               background-color: rgba(0,0,0,.01);
-               border-color: transparent;
-            }
-          }
-          .uib-left {
-            text-align: left;
-          }
-          .uib-right {
-            text-align: right;
-          }
+    thead tr th {
+      button.btn-default {
+        color: @component-active-color;
+        background: transparent;
+        border-color: transparent;
+        box-shadow: none;
+        font-size: 1.24em;
+        padding: 1.4em 1em;
+        text-transform: uppercase;
+        &:hover, &:focus, &:active, &:active:hover, &:active:focus {
+          color: @component-active-color;
+          border-color: transparent;
+          background-color: inherit;
+        }
+        &.disabled:hover {
+          background-color: inherit;
         }
       }
     }
-
     tbody {
       .btn-default, .btn {
-        background-color: @gray-lighter;
-        border-color: @gray-lighter;
+        background-color: transparent;
+        border-color: transparent;
         color: @wm-datepicker-text-color;
         width: auto;
         box-shadow: none;
@@ -1409,92 +1508,93 @@
           font-weight: bold;
         }
       }
+      td {
+        &.week {
+          span {
+             color: @brand-primary;
+             &:hover {
+               background-color: transparent;
+               color: @brand-primary;
+             }
+          }
+        }
+        span {
+            &.text-info {
+              color: @brand-primary;
+              font-weight: bold;
+            }
+            &.selected {
+              background-color: lighten(@brand-primary, 30%);
+              color: @text-color;
+            }
+            &:hover {
+              background-color: @component-active-bg;
+              border-color: @component-active-bg;
+              color: @component-active-color;
+            }
+            &.disabled, &.is-other-month {
+              &:hover {
+                color: rgba(0, 0, 0, 0.25);
+                background-color: rgba(168,168,168,0.05);
+              }
+            }
+        }
+      }
     }
     small {
       font-size: .85em;
       text-transform: uppercase;
       color: @component-active-color;
     }
-    .uib-monthpicker, .uib-yearpicker {
-      tbody {
-        .btn-default, .btn {
-          padding: @padding-base-horizontal 4px;
-        }
-      }
-    }
   }
 
   //styling for the popup calendar actions
-  .app-date, .app-datetime {
-    .dropdown-menu {
-      border: 1px solid transparent;
+  .bs-datepicker {
+    border: 1px solid @input-border;
+    .bs-datepicker-head {
+      background: @component-active-bg;
+      color: @component-active-color;
+    }
+    .bs-datepicker-body {
       padding: 0;
-      li {
-        &:last-child {
-          padding: 1.2em;
-          overflow: auto !important;
+      border: none;
+      thead tr {
+        background-color: @wm-datepicker-header-bg;
+        color: @component-active-color;
+        > th {
+          font-weight: normal;
         }
       }
     }
-
+    table td.is-highlighted:not(.disabled):not(.selected) span {
+      background-color: @component-active-bg;
+      border-color: @component-active-bg;
+      color: @component-active-color;
+      &.text-info {
+        color: inherit;
+      }
+    }
+  }
+  datepicker {
+    thead {
+      background: @component-active-bg;
+      color: @component-active-color;
+      tr:nth-child(2) {
+        background-color: @wm-datepicker-header-bg;
+      }
+    }
+    tbody {
+      .btn.btn-sm {
+        font-size: 1em;
+      }
+    }
+  }
+  //styling for the popup calendar actions
+  .app-date, .app-datetime {
     strong {
       font-weight: normal;
     }
-
-    table {
-      outline: none;
-    }
-
-    thead {
-       background-color: @component-active-bg;
-       tr:nth-child(2) {
-         background-color: @wm-datepicker-header-bg;
-         th {
-             &:first-child {
-                padding: 10px 0 10px 20px;
-             }
-             &:last-child {
-                padding: 10px 20px 10px 0;
-             }
-         }
-      }
-    }
-
-    .uib-daypicker {
-      tbody{
-        .btn-default {
-          border-radius: 50%;
-          min-width: 0;
-          height: 24pt;
-          width: 24pt;
-          vertical-align: middle;
-          text-align: center;
-          padding: 0;
-        }
-      }
-    }
-
     tbody {
-        tr {
-           td {
-              &:first-child {
-                 padding-left: 20px;
-              }
-              &:last-child {
-                 padding-right: 20px;
-              }
-           }
-           &:first-child {
-             td {
-                padding-top: 15px;
-             }
-           }
-          &:last-child {
-            td {
-              padding-bottom: 15px;
-            }
-          }
-        }
         .btn-default {
            &.active, &:focus {
               background-color: @component-active-bg;
@@ -1511,9 +1611,6 @@
               border-color: transparent;
               color: @text-color;
            }
-        }
-        .btn-sm {
-          font-size: 1em;
         }
     }
 
@@ -1543,6 +1640,9 @@
           background-color: @btn-primary-bg;
           color: @btn-primary-color;
         }
+        span:hover {
+          border-color: @component-active-color;
+        }
       }
     }
   }
@@ -1551,6 +1651,11 @@
   .app-calendar {
     background-color: @body-bg;
     box-shadow: 0 2px 0 rgba(0, 0, 0, 0.05);
+    .well.well-sm {
+      background-color: @body-bg;
+      padding: 0;
+      margin: 0;
+    }
     .fc {
       .fc-state-default {
         background: rgba(0,0,0,.05);
@@ -1634,7 +1739,7 @@
     }
 
     .form-control {
-      background-color: @gray-lighter;
+      background-color: @btn-default-bg;
       background-image: none;
     }
   }

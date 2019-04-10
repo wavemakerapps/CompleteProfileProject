@@ -84,6 +84,20 @@ public interface AccountManagerService {
      */
     AccountManager update(@Valid AccountManager accountManager);
 
+
+    /**
+     * Partially updates the details of an existing AccountManager. It updates only the
+     * fields of the existing AccountManager which are passed in the accountManagerPatch.
+     *
+     * This method overrides the input field values using Server side or database managed properties defined on AccountManager if any.
+     *
+     * @param accountmanagerId The id of the AccountManager to be deleted; value cannot be null.
+     * @param accountManagerPatch The partial data of AccountManager which is supposed to be updated; value cannot be null.
+     * @return The updated AccountManager.
+     * @throws EntityNotFoundException if no AccountManager is found with given input.
+     */
+    AccountManager partialUpdate(Integer accountmanagerId, Map<String, Object> accountManagerPatch);
+
     /**
      * Deletes an existing AccountManager with the given id.
      *

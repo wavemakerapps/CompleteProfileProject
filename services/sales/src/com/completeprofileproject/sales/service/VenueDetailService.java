@@ -84,6 +84,20 @@ public interface VenueDetailService {
      */
     VenueDetail update(@Valid VenueDetail venueDetail);
 
+
+    /**
+     * Partially updates the details of an existing VenueDetail. It updates only the
+     * fields of the existing VenueDetail which are passed in the venueDetailPatch.
+     *
+     * This method overrides the input field values using Server side or database managed properties defined on VenueDetail if any.
+     *
+     * @param venuedetailId The id of the VenueDetail to be deleted; value cannot be null.
+     * @param venueDetailPatch The partial data of VenueDetail which is supposed to be updated; value cannot be null.
+     * @return The updated VenueDetail.
+     * @throws EntityNotFoundException if no VenueDetail is found with given input.
+     */
+    VenueDetail partialUpdate(Integer venuedetailId, Map<String, Object> venueDetailPatch);
+
     /**
      * Deletes an existing VenueDetail with the given id.
      *

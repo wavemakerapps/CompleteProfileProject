@@ -84,6 +84,20 @@ public interface ClientService {
      */
     Client update(@Valid Client client);
 
+
+    /**
+     * Partially updates the details of an existing Client. It updates only the
+     * fields of the existing Client which are passed in the clientPatch.
+     *
+     * This method overrides the input field values using Server side or database managed properties defined on Client if any.
+     *
+     * @param clientId The id of the Client to be deleted; value cannot be null.
+     * @param clientPatch The partial data of Client which is supposed to be updated; value cannot be null.
+     * @return The updated Client.
+     * @throws EntityNotFoundException if no Client is found with given input.
+     */
+    Client partialUpdate(Integer clientId, Map<String, Object> clientPatch);
+
     /**
      * Deletes an existing Client with the given id.
      *

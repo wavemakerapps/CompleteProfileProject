@@ -84,6 +84,20 @@ public interface ActionItemService {
      */
     ActionItem update(@Valid ActionItem actionItem);
 
+
+    /**
+     * Partially updates the details of an existing ActionItem. It updates only the
+     * fields of the existing ActionItem which are passed in the actionItemPatch.
+     *
+     * This method overrides the input field values using Server side or database managed properties defined on ActionItem if any.
+     *
+     * @param actionitemId The id of the ActionItem to be deleted; value cannot be null.
+     * @param actionItemPatch The partial data of ActionItem which is supposed to be updated; value cannot be null.
+     * @return The updated ActionItem.
+     * @throws EntityNotFoundException if no ActionItem is found with given input.
+     */
+    ActionItem partialUpdate(Integer actionitemId, Map<String, Object> actionItemPatch);
+
     /**
      * Deletes an existing ActionItem with the given id.
      *

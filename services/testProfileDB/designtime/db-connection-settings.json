@@ -29,10 +29,10 @@
   "dataSourceType" : "WM_MANAGED_DATASOURCE",
   "jndiName" : "",
   "reloadInfo" : {
-    "reload" : true,
-    "reason" : "MIGRATION_FAILED",
-    "message" : "Regenerating Source to implement the newly added method in the classes extending WMGenericDaoImpl.",
-    "reImport" : true
+    "reload" : false,
+    "reason" : null,
+    "message" : null,
+    "reImport" : false
   },
   "readOnly" : false
 }

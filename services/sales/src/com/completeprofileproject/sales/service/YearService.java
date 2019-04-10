@@ -84,6 +84,20 @@ public interface YearService {
      */
     Year update(@Valid Year year);
 
+
+    /**
+     * Partially updates the details of an existing Year. It updates only the
+     * fields of the existing Year which are passed in the yearPatch.
+     *
+     * This method overrides the input field values using Server side or database managed properties defined on Year if any.
+     *
+     * @param yearId The id of the Year to be deleted; value cannot be null.
+     * @param yearPatch The partial data of Year which is supposed to be updated; value cannot be null.
+     * @return The updated Year.
+     * @throws EntityNotFoundException if no Year is found with given input.
+     */
+    Year partialUpdate(Integer yearId, Map<String, Object> yearPatch);
+
     /**
      * Deletes an existing Year with the given id.
      *

@@ -84,6 +84,20 @@ public interface Table8Service {
      */
     Table8 update(@Valid Table8 table8);
 
+
+    /**
+     * Partially updates the details of an existing Table8. It updates only the
+     * fields of the existing Table8 which are passed in the table8Patch.
+     *
+     * This method overrides the input field values using Server side or database managed properties defined on Table8 if any.
+     *
+     * @param table8Id The id of the Table8 to be deleted; value cannot be null.
+     * @param table8Patch The partial data of Table8 which is supposed to be updated; value cannot be null.
+     * @return The updated Table8.
+     * @throws EntityNotFoundException if no Table8 is found with given input.
+     */
+    Table8 partialUpdate(Integer table8Id, Map<String, Object> table8Patch);
+
     /**
      * Deletes an existing Table8 with the given id.
      *
